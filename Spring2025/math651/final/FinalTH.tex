@@ -1,0 +1,102 @@
+\documentclass[minion]{homework651}
+% \usepackage{cmacros}
+\include{hwextras}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[all,cmtip]{xy}
+
+\def\net<#1>{\left<#1\right>}
+\newcommand\RP{{\mathbb R\mathbb P}}
+\newcommand\RPn{\RP^n}
+\def\abs#1{\left|#1\right|}
+
+\doclabel{Math F651: Take Home Final}
+\docdate{Due: 10:00pm Friday, May 2, 2025}
+
+\begin{document}
+
+{\bf Please see the rules below.}
+
+	
+\begin{problems}
+
+\problem Let $C(\Reals)$ denote the set of continuous functions from $\Reals$ to $\Reals$.
+Show that $C(\Reals)$ is dense in $\Reals^\Reals$ in the product topology, but not dense in the box topology.
+	
+\problem The M\"obius band is the quotient of $[0,1]\times \Reals$ where
+$(0,y)\sim (1,-y)$.
+\begin{subproblems}
+\item Show that the M\"obius band is a 2-manifold.
+\item Show that the M\"obius band is homotopy equivalent to a circle.
+\item No rigor please, just a picture or two: what familiar space is the 1-point compactificaiton of the M\"obius band?
+\end{subproblems}
+
+\problem You will recall that showing that $\RP^n$ is Hausdorff was a hassle.  Here's 
+a slick technique when the quotient you are looking at arises (as it often does!) from a group action.
+\begin{subproblems}
+\item Lee 3-22 b
+\item Show $\RP^n$ is Hausdorff. (Hurrah Closed Map Theorem!)
+\end{subproblems}
+
+\problem  Suppose the Earth is a sphere and that temperature is a continuous function of position on Earth.  Prove that there is a point $p$ on Earth where the temperature is the same as at its antipodal
+point $-p$.
+
+\begin{wrapfigure}{r}{1.8in}
+	\vskip -.5cm
+\includegraphics{hw5f1}
+\caption{Gluing a half sphere.}
+\end{wrapfigure}
+\problem  
+\begin{subproblems}
+\item Show that the upper half sphere $S^{n,+}$
+with antipodal points on $\partial S^{n,+}$ identified is homeomorphic to $\RPn$.
+\item Consider $X=\{(xy,yz,zx,x^2,y^2,z^2)\in\Reals^6:x^2+y^2+z^2=1\}$.
+Prove that this set is homeomorphic to $\RP^2$.	
+\end{subproblems}
+
+\problem Suppose $G$ is a topological group, $A$ is a closed subset,
+and $B$ is a compact subset.  Show that $AB$ is closed. Hint: Nets!
+
+\problem Recall that a set $A\subset X$ is a retract of $X$ if there 
+is a continuous $f:X\to A$ such that $f(a)=a$ for all $a\in A$.
+\begin{subproblems}
+\item Show that if $X$ is Hausdorff and $A$ is a retract of $X$ then $A$ is closed.
+\item Let $A$ be a two point subset of $\Reals^2$. Show that it is not a retract of $\Reals^2$.
+\item Show that the closed ball $\overline{\mathbb{B}^2}$ is a retract of $\Reals^2$.
+\item Show that $S^1$ is not a retract of $\Reals^2$.
+\end{subproblems}
+
+\problem Consider a map $g:S^1 \rightarrow S^1$.  Using 
+degree theory techniques, show that $g$ admits a lift
+$\tilde g:S^1\rightarrow \Reals$ if and only if $\deg(g)=0$.
+
+\problem Lee 9-5
+
+\problem Compute the fundamental groups of the following spaces:
+\begin{subproblems}
+\item The projective plane with two points removed.
+\item A torus with two points removed.
+\item The union of the unit sphere $S^2$ in $\Reals^3$ with the $z$-axis.
+\end{subproblems}
+
+\end{problems}
+\bigskip
+\hrule
+\bigskip
+{\bf  Rules and format:}
+\begin{itemize}
+
+\item You are welcome to discuss this exam with me (David Maxwell) to ask for hints and so forth.
+\item  If you find a suspected typo, please contact me as soon as possible and I will
+communicate it to the class if needed.
+\item You may not discuss the exam with anyone else (including an AI) until after the due date/time.
+\item You are permitted to reference either of the two texts used for the class (Lee or Crossley).
+No other resources are permitted.
+\item Each problem is weighted equally (10 points each).
+\item The due date/time is absolutely firm.
+\item We will schedule a hints sessions for this exam.
+\end{itemize}
+ 
+
+\end{document}
+
