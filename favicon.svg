@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="25.116184mm"
+   height="25.116184mm"
+   viewBox="0 0 25.116184 25.116184"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="favicon.png"
+   inkscape:export-xdpi="194.16963"
+   inkscape:export-ydpi="194.16963"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.7674928"
+     inkscape:cx="42.999208"
+     inkscape:cy="50.406635"
+     inkscape:window-width="1512"
+     inkscape:window-height="890"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-23.513025,-28.322508)">
+    <rect
+       style="fill:#84b6d9;fill-opacity:1;stroke:none;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1"
+       width="25.116184"
+       height="25.116184"
+       x="23.513025"
+       y="28.322508"
+       rx="3.5277777"
+       ry="3.5277777" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1555px;font-family:'Lucida Grande';-inkscape-font-specification:'Lucida Grande';fill:#1a1a1a;stroke:none;stroke-width:7.07775;stroke-linecap:round;stroke-linejoin:round"
+       x="24.034103"
+       y="45.99538"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:'Lucida Grande';-inkscape-font-specification:'Lucida Grande Semi-Bold';fill:#1a1a1a;stroke-width:7.07775"
+         x="24.034103"
+         y="45.99538">DM</tspan></text>
+  </g>
+</svg>
