@@ -101,13 +101,13 @@ is_root: true
 <p />
 
 <table class="asst-table">
-	<tr><td>Lecture I</td><td><a href="unhelpful-e-and-m/unhelpful-e-and-m-part-1.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_ijmgmx0p">Video</a></td>
+	<tr><td>Lecture I</td><td><a href="https://assets.damaxwell.org/unhelpful-e-and-m-part-1.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_ijmgmx0p">Video</a></td>
 	</tr>
-	<tr><td> Lecture II</td><td><a href="unhelpful-e-and-m/unhelpful-e-and-m-part-2.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_4a73d54g?st=629&ed=4074">Video</a></td>
+	<tr><td> Lecture II</td><td><a href="https://assets.damaxwell.org/unhelpful-e-and-m-part-2.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_4a73d54g?st=629&ed=4074">Video</a></td>
 	</tr>
-	<tr><td> Lecture IIIa</td><td><a href="unhelpful-e-and-m/unhelpful-e-and-m-part-3a.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_pw2wgvuk?st=382&ed=4088">Video</a></td>
+	<tr><td> Lecture IIIa</td><td><a href="https://assets.damaxwell.org/unhelpful-e-and-m-part-3a.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_pw2wgvuk?st=382&ed=4088">Video</a></td>
 	</tr>
-	<tr><td> Lecture IIIb</td><td><a href="unhelpful-e-and-m/unhelpful-e-and-m-part-3b.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_2ha3ygy9?st=360&ed=5069">Video</a></td>
+	<tr><td> Lecture IIIb</td><td><a href="https://assets.damaxwell.org/unhelpful-e-and-m-part-3b.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_2ha3ygy9?st=360&ed=5069">Video</a></td>
 	</tr>
 </table>
 
