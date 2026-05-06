@@ -11,11 +11,11 @@ Hi!
 A long time ago I went to a university in southern Ontario and
 became captivated by mathematics and physics; I have a BMath in Pure
 and Applied Mathematics from the [University of Waterloo](https://uwaterloo.ca/math/).  After 
-earning an MSc at [UBC](https://www.math.ubc.ca) 
+receiving an MSc at [UBC](https://www.math.ubc.ca) 
 in mathematical fluid dynamics I spent a short 
 stint as a software developer during the "dot-com bubble" 
 and returned to grad school at the [University of Washington](https://math.washington.edu).
-In 2004 I received a PhD in Mathematics, moved to Fairbanks, Alaska, 
+In 2004 I obtained a PhD in Mathematics, moved to Fairbanks, Alaska, 
 and seem to have not looked back.
 
 My [research](research.html) is mostly in the realm of general relativity.
