@@ -3,22 +3,6 @@ layout: default
 title: David Maxwell
 is_root: true
 ---
-<!-- <div style="display: flex; align-items: flex-start; gap: 30px; margin-top: 30px;">
-    <div style="flex-shrink: 1;">
-        <img src="maxwell.jpg" style="height: 150px; width: auto; max-height: 150px; max-width: min(150px, 30vw); border-radius: 10px; object-fit: cover;">
-    </div>
-    <div style="flex: 1; min-width: 0;">
-        <p style="margin-top: 0px">
-        <b>Professor of Mathematics</b><br>
-        <b>University of Alaska Fairbanks</b>
-        </p>
-        <p>
-        <b>Office:</b> Chapman 308C<br>
-        <b>E-mail:</b> <a href="mailto:damaxwell@alaska.edu">damaxwell@alaska.edu</a><br>
-        </p>
-    </div>
-</div> -->
-
 <div class="profile-container">
     <div class="title-section mobile-only">
         <p class="title-text">
@@ -28,9 +12,12 @@ is_root: true
     </div>
     
     <div class="layout-container">
-        <div class="image-container">
-            <img src="maxwell.jpg" alt="Profile photo">
+    <div class="image-container">
+        <div class="photo-crossfade">
+            <img class="photo-current" src="maxwell-2026.jpg" alt="Profile photo">
+            <img class="photo-old" src="maxwell-2005.jpg" alt="Profile photo (2005)">
         </div>
+    </div>
         <div class="text-content">
             <div class="title-section desktop">
                 <p class="title-text">
