@@ -15,6 +15,6 @@ with essentially nothing in common.
 
 * Vibe coded katakana/hiragana [game](kana-match).
 
-* [Play](ifclaude) interactive fiction games in a browser. (Why? Good question! There's another version that lets [Claude](http://claude.ai) play instead.)
+* [Play](ifclaude) interactive fiction games in a browser. Why? Well, if you have the password, actually [Claude](http://claude.ai) plays the game as an agent and chats about he experience with you.  But even without the password, you can still use the app as a standalone IF player. I should really just allow people to provide their own API key and burn their own tokens...
 {% endcapture %}
 {% include card.html content=curio_card %}
