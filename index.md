@@ -36,7 +36,9 @@ is_root: true
 
 ## Current Courses
 <!-- <div class="card"> -->
-{%for term in site.data.teaching %}
+### None right now. Away on sabbatical 🎓
+
+<!-- {%for term in site.data.teaching %}
   {%if term.term == site.active_term%}
 <ul style="margin-left: 0px; font-size: 1.1em;">
      {%for course in term.courses%}
@@ -48,7 +50,7 @@ is_root: true
     {%endfor%}
 </ul>
   {%endif%}
-{%endfor%}
+{%endfor%} -->
 <!-- </div> -->
 
 ## Presentations
