@@ -1,4 +1,4 @@
-const CACHE = 'kana-v4';
+const CACHE = 'kana-v7';
 const ASSETS = ['./index.html', './style.css', './game.js', './manifest.json', './icon-192.png', './icon-512.png', './gear.png'];
 
 self.addEventListener('install', e => {

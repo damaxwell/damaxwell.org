@@ -151,6 +151,8 @@ button.tile.matched {
   cursor: default;
 }
 
+button.tile.compound { font-size: 20px; }
+
 button.tile.wrong-h { border-color: #ff6b6b; transform: translateX(-3px); }
 button.tile.wrong-k { border-color: #ff6b6b; transform: translateX(3px); }
 

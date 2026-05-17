@@ -1,29 +1,260 @@
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const KANA = [
-  ["あ","ア"], ["い","イ"], ["う","ウ"], ["え","エ"], ["お","オ"],
-  ["か","カ"], ["き","キ"], ["く","ク"], ["け","ケ"], ["こ","コ"],
-  ["さ","サ"], ["し","シ"], ["す","ス"], ["せ","セ"], ["そ","ソ"],
-  ["た","タ"], ["ち","チ"], ["つ","ツ"], ["て","テ"], ["と","ト"],
-  ["な","ナ"], ["に","ニ"], ["ぬ","ヌ"], ["ね","ネ"], ["の","ノ"],
-  ["は","ハ"], ["ひ","ヒ"], ["ふ","フ"], ["へ","ヘ"], ["ほ","ホ"],
-  ["ま","マ"], ["み","ミ"], ["む","ム"], ["め","メ"], ["も","モ"],
-  ["や","ヤ"], ["ゆ","ユ"], ["よ","ヨ"],
-  ["ら","ラ"], ["り","リ"], ["る","ル"], ["れ","レ"], ["ろ","ロ"],
-  ["わ","ワ"], ["を","ヲ"], ["ん","ン"],
+  ["あ", "ア"],
+  ["い", "イ"],
+  ["う", "ウ"],
+  ["え", "エ"],
+  ["お", "オ"],
+  ["か", "カ"],
+  ["き", "キ"],
+  ["く", "ク"],
+  ["け", "ケ"],
+  ["こ", "コ"],
+  ["さ", "サ"],
+  ["し", "シ"],
+  ["す", "ス"],
+  ["せ", "セ"],
+  ["そ", "ソ"],
+  ["た", "タ"],
+  ["ち", "チ"],
+  ["つ", "ツ"],
+  ["て", "テ"],
+  ["と", "ト"],
+  ["な", "ナ"],
+  ["に", "ニ"],
+  ["ぬ", "ヌ"],
+  ["ね", "ネ"],
+  ["の", "ノ"],
+  ["は", "ハ"],
+  ["ひ", "ヒ"],
+  ["ふ", "フ"],
+  ["へ", "ヘ"],
+  ["ほ", "ホ"],
+  ["ま", "マ"],
+  ["み", "ミ"],
+  ["む", "ム"],
+  ["め", "メ"],
+  ["も", "モ"],
+  ["や", "ヤ"],
+  ["ゆ", "ユ"],
+  ["よ", "ヨ"],
+  ["ら", "ラ"],
+  ["り", "リ"],
+  ["る", "ル"],
+  ["れ", "レ"],
+  ["ろ", "ロ"],
+  ["わ", "ワ"],
+  ["を", "ヲ"],
+  ["ん", "ン"],
 ];
 
 const ROM = {
-  "あ":"a",   "い":"i",   "う":"u",   "え":"e",   "お":"o",
-  "か":"ka",  "き":"ki",  "く":"ku",  "け":"ke",  "こ":"ko",
-  "さ":"sa",  "し":"shi", "す":"su",  "せ":"se",  "そ":"so",
-  "た":"ta",  "ち":"chi", "つ":"tsu", "て":"te",  "と":"to",
-  "な":"na",  "に":"ni",  "ぬ":"nu",  "ね":"ne",  "の":"no",
-  "は":"ha",  "ひ":"hi",  "ふ":"fu",  "へ":"he",  "ほ":"ho",
-  "ま":"ma",  "み":"mi",  "む":"mu",  "め":"me",  "も":"mo",
-  "や":"ya",  "ゆ":"yu",  "よ":"yo",
-  "ら":"ra",  "り":"ri",  "る":"ru",  "れ":"re",  "ろ":"ro",
-  "わ":"wa",  "を":"wo",  "ん":"n",
+  あ: "a",
+  い: "i",
+  う: "u",
+  え: "e",
+  お: "o",
+  か: "ka",
+  き: "ki",
+  く: "ku",
+  け: "ke",
+  こ: "ko",
+  さ: "sa",
+  し: "shi",
+  す: "su",
+  せ: "se",
+  そ: "so",
+  た: "ta",
+  ち: "chi",
+  つ: "tsu",
+  て: "te",
+  と: "to",
+  な: "na",
+  に: "ni",
+  ぬ: "nu",
+  ね: "ne",
+  の: "no",
+  は: "ha",
+  ひ: "hi",
+  ふ: "fu",
+  へ: "he",
+  ほ: "ho",
+  ま: "ma",
+  み: "mi",
+  む: "mu",
+  め: "me",
+  も: "mo",
+  や: "ya",
+  ゆ: "yu",
+  よ: "yo",
+  ら: "ra",
+  り: "ri",
+  る: "ru",
+  れ: "re",
+  ろ: "ro",
+  わ: "wa",
+  を: "wo",
+  ん: "n",
+  // dakuten / handakuten variants
+  が: "ga",
+  ぎ: "gi",
+  ぐ: "gu",
+  げ: "ge",
+  ご: "go",
+  ざ: "za",
+  じ: "ji",
+  ず: "zu",
+  ぜ: "ze",
+  ぞ: "zo",
+  だ: "da",
+  ぢ: "di",
+  づ: "du",
+  で: "de",
+  ど: "do",
+  ば: "ba",
+  び: "bi",
+  ぶ: "bu",
+  べ: "be",
+  ぼ: "bo",
+  ぱ: "pa",
+  ぴ: "pi",
+  ぷ: "pu",
+  ぺ: "pe",
+  ぽ: "po",
+  // youon (plain)
+  きゃ: "kya",
+  きゅ: "kyu",
+  きょ: "kyo",
+  しゃ: "sha",
+  しゅ: "shu",
+  しょ: "sho",
+  ちゃ: "cha",
+  ちゅ: "chu",
+  ちょ: "cho",
+  にゃ: "nya",
+  にゅ: "nyu",
+  にょ: "nyo",
+  ひゃ: "hya",
+  ひゅ: "hyu",
+  ひょ: "hyo",
+  みゃ: "mya",
+  みゅ: "myu",
+  みょ: "myo",
+  りゃ: "rya",
+  りゅ: "ryu",
+  りょ: "ryo",
+  // youon + dakuten/handakuten
+  ぎゃ: "gya",
+  ぎゅ: "gyu",
+  ぎょ: "gyo",
+  じゃ: "ja",
+  じゅ: "ju",
+  じょ: "jo",
+  びゃ: "bya",
+  びゅ: "byu",
+  びょ: "byo",
+  ぴゃ: "pya",
+  ぴゅ: "pyu",
+  ぴょ: "pyo",
+};
+
+// For each hiragana (base or youon compound) that admits dakuten/handakuten,
+// lists the variant [hi, kata] pairs. H-row has two entries (B then P).
+// ちゃ/ちゅ/ちょ omitted — voiced combination not in common use.
+const DAKUTEN = {
+  か: [["が", "ガ"]],
+  き: [["ぎ", "ギ"]],
+  く: [["ぐ", "グ"]],
+  け: [["げ", "ゲ"]],
+  こ: [["ご", "ゴ"]],
+  さ: [["ざ", "ザ"]],
+  し: [["じ", "ジ"]],
+  す: [["ず", "ズ"]],
+  せ: [["ぜ", "ゼ"]],
+  そ: [["ぞ", "ゾ"]],
+  た: [["だ", "ダ"]],
+  ち: [["ぢ", "ヂ"]],
+  つ: [["づ", "ヅ"]],
+  て: [["で", "デ"]],
+  と: [["ど", "ド"]],
+  は: [
+    ["ば", "バ"],
+    ["ぱ", "パ"],
+  ],
+  ひ: [
+    ["び", "ビ"],
+    ["ぴ", "ピ"],
+  ],
+  ふ: [
+    ["ぶ", "ブ"],
+    ["ぷ", "プ"],
+  ],
+  へ: [
+    ["べ", "ベ"],
+    ["ぺ", "ペ"],
+  ],
+  ほ: [
+    ["ぼ", "ボ"],
+    ["ぽ", "ポ"],
+  ],
+  きゃ: [["ぎゃ", "ギャ"]],
+  きゅ: [["ぎゅ", "ギュ"]],
+  きょ: [["ぎょ", "ギョ"]],
+  しゃ: [["じゃ", "ジャ"]],
+  しゅ: [["じゅ", "ジュ"]],
+  しょ: [["じょ", "ジョ"]],
+  ひゃ: [
+    ["びゃ", "ビャ"],
+    ["ぴゃ", "ピャ"],
+  ],
+  ひゅ: [
+    ["びゅ", "ビュ"],
+    ["ぴゅ", "ピュ"],
+  ],
+  ひょ: [
+    ["びょ", "ビョ"],
+    ["ぴょ", "ピョ"],
+  ],
+};
+
+// Base hiragana → three youon forms [hi, kata] for ya/yu/yo.
+const YOUON = {
+  き: [
+    ["きゃ", "キャ"],
+    ["きゅ", "キュ"],
+    ["きょ", "キョ"],
+  ],
+  し: [
+    ["しゃ", "シャ"],
+    ["しゅ", "シュ"],
+    ["しょ", "ショ"],
+  ],
+  ち: [
+    ["ちゃ", "チャ"],
+    ["ちゅ", "チュ"],
+    ["ちょ", "チョ"],
+  ],
+  に: [
+    ["にゃ", "ニャ"],
+    ["にゅ", "ニュ"],
+    ["にょ", "ニョ"],
+  ],
+  ひ: [
+    ["ひゃ", "ヒャ"],
+    ["ひゅ", "ヒュ"],
+    ["ひょ", "ヒョ"],
+  ],
+  み: [
+    ["みゃ", "ミャ"],
+    ["みゅ", "ミュ"],
+    ["みょ", "ミョ"],
+  ],
+  り: [
+    ["りゃ", "リャ"],
+    ["りゅ", "リュ"],
+    ["りょ", "リョ"],
+  ],
 };
 
 const COLORS = ["#ff6b6b", "#ffa94d", "#74c0fc", "#8ce99a", "#da77f2"];
@@ -33,41 +264,48 @@ const COLORS = ["#ff6b6b", "#ffa94d", "#74c0fc", "#8ce99a", "#da77f2"];
 const ROUND_SIZE = 5;
 
 const TIMING = {
-  FOCUS_DELAY:        30,   // ms before focusing a newly revealed input
-  WRONG_CLEAR:       450,   // ms to hold the wrong-shake animation
-  CELEBRATION_DELAY: 200,   // ms pause before the celebration overlay appears
-  CELEBRATION_HOLD: 1800,   // ms the celebration overlay is shown
-  GRID_OUT_DELAY:    500,   // ms after grid fade-out before starting a new round
-  SURRENDER_HOLD:   1500,   // ms the surrender reveal overlay is shown
+  FOCUS_DELAY: 30, // ms before focusing a newly revealed input
+  WRONG_CLEAR: 450, // ms to hold the wrong-shake animation
+  CELEBRATION_DELAY: 200, // ms pause before the celebration overlay appears
+  CELEBRATION_HOLD: 1800, // ms the celebration overlay is shown
+  GRID_OUT_DELAY: 500, // ms after grid fade-out before starting a new round
+  SURRENDER_HOLD: 1500, // ms the surrender reveal overlay is shown
 };
 
 // ─── Persisted options ────────────────────────────────────────────────────────
 
-const opts = { col1: 'hira', mode: 'full' };
-try { const s = localStorage.getItem('kana-opts'); if (s) Object.assign(opts, JSON.parse(s)); } catch (_) {}
-function saveOpts() { try { localStorage.setItem('kana-opts', JSON.stringify(opts)); } catch (_) {} }
+const opts = { col1: "hira", mode: "full", dakuten: false, youon: false };
+try {
+  const s = localStorage.getItem("kana-opts");
+  if (s) Object.assign(opts, JSON.parse(s));
+} catch (_) {}
+function saveOpts() {
+  try {
+    localStorage.setItem("kana-opts", JSON.stringify(opts));
+  } catch (_) {}
+}
 
 // ─── State ────────────────────────────────────────────────────────────────────
 
 const state = {
-  round:        null,
-  selectedH:    null,
-  selectedK:    null,
-  matched:      {},
-  wrongH:       null,
-  wrongK:       null,
-  romajiVals:   {},
-  romajiOk:     {},
-  score:        0,
-  streak:       0,
-  roundNum:     0,
-  surrendered:  false,
+  round: null,
+  selectedH: null,
+  selectedK: null,
+  matched: {},
+  wrongH: null,
+  wrongK: null,
+  romajiVals: {},
+  romajiOk: {},
+  score: 0,
+  streak: 0,
+  roundNum: 0,
+  surrendered: false,
   settingsOpen: false,
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const $ = id => document.getElementById(id);
+const $ = (id) => document.getElementById(id);
 
 function shuffle(arr) {
   const a = [...arr];
@@ -80,25 +318,39 @@ function shuffle(arr) {
 
 // ─── Game logic ───────────────────────────────────────────────────────────────
 
+function applyVariants([hi, kata]) {
+  const youonForms = opts.youon ? YOUON[hi] : null;
+  let [cur, curK] =
+    youonForms && Math.random() < 1 / 3
+      ? youonForms[Math.floor(Math.random() * youonForms.length)]
+      : [hi, kata];
+  if (opts.dakuten) {
+    const dv = DAKUTEN[cur];
+    if (dv && Math.random() < 0.5)
+      return dv[Math.floor(Math.random() * dv.length)];
+  }
+  return [cur, curK];
+}
+
 function pickRound() {
-  const pairs = shuffle(KANA).slice(0, ROUND_SIZE);
+  const pairs = shuffle(KANA).slice(0, ROUND_SIZE).map(applyVariants);
   return {
-    left:  shuffle(pairs.map(p => p[0])),
-    right: shuffle(pairs.map(p => p[1])),
+    left: shuffle(pairs.map((p) => p[0])),
+    right: shuffle(pairs.map((p) => p[1])),
     pairs: Object.fromEntries(pairs),
-    rev:   Object.fromEntries(pairs.map(([h, k]) => [k, h])),
+    rev: Object.fromEntries(pairs.map(([h, k]) => [k, h])),
   };
 }
 
 function newRound() {
-  state.round      = pickRound();
-  state.selectedH  = null;
-  state.selectedK  = null;
-  state.matched    = {};
-  state.wrongH     = null;
-  state.wrongK     = null;
+  state.round = pickRound();
+  state.selectedH = null;
+  state.selectedK = null;
+  state.matched = {};
+  state.wrongH = null;
+  state.wrongK = null;
   state.romajiVals = {};
-  state.romajiOk   = {};
+  state.romajiOk = {};
   state.surrendered = false;
   state.roundNum++;
   render();
@@ -111,22 +363,26 @@ function recordMatch(hi, k) {
   state.selectedH = null;
   state.selectedK = null;
   render();
-  if (opts.mode === 'fast') {
+  if (opts.mode === "fast") {
     checkComplete();
   } else {
-    const inp = $('r_' + k);
+    const inp = $("r_" + k);
     if (inp) setTimeout(() => inp.focus(), TIMING.FOCUS_DELAY);
   }
 }
 
 function recordWrong(hi, k) {
-  state.wrongH    = hi;
-  state.wrongK    = k;
-  state.streak    = 0;
+  state.wrongH = hi;
+  state.wrongK = k;
+  state.streak = 0;
   state.selectedH = null;
   state.selectedK = null;
   render();
-  setTimeout(() => { state.wrongH = null; state.wrongK = null; render(); }, TIMING.WRONG_CLEAR);
+  setTimeout(() => {
+    state.wrongH = null;
+    state.wrongK = null;
+    render();
+  }, TIMING.WRONG_CLEAR);
 }
 
 function handleHiraTap(hi) {
@@ -138,8 +394,8 @@ function handleHiraTap(hi) {
   } else {
     state.selectedH = hi;
     state.selectedK = null;
-    state.wrongH    = null;
-    state.wrongK    = null;
+    state.wrongH = null;
+    state.wrongK = null;
     render();
   }
 }
@@ -148,29 +404,30 @@ function handleKataTap(k) {
   const kHira = state.round.rev[k];
   if (state.matched[kHira] !== undefined) return;
   if (state.selectedH !== null) {
-    if (state.round.pairs[state.selectedH] === k) recordMatch(state.selectedH, k);
+    if (state.round.pairs[state.selectedH] === k)
+      recordMatch(state.selectedH, k);
     else recordWrong(state.selectedH, k);
   } else {
     state.selectedK = k;
     state.selectedH = null;
-    state.wrongH    = null;
-    state.wrongK    = null;
+    state.wrongH = null;
+    state.wrongK = null;
     render();
   }
 }
 
 function handleSurrender(k) {
-  const hi     = state.round.rev[k];
+  const hi = state.round.rev[k];
   const romaji = ROM[hi];
-  state.streak      = 0;
+  state.streak = 0;
   state.surrendered = true;
 
   // Dismiss the mobile keyboard before the overlay appears
-  const inp = $('r_' + k);
+  const inp = $("r_" + k);
   if (inp) inp.blur();
 
-  const ov = document.createElement('div');
-  ov.className = 'overlay';
+  const ov = document.createElement("div");
+  ov.className = "overlay";
   ov.innerHTML = `<div class="inner">
     <div class="surrender-pair">
       <span class="surrender-char">${hi}</span>
@@ -178,21 +435,22 @@ function handleSurrender(k) {
     </div>
     <div class="surrender-romaji">${romaji}</div>
   </div>`;
-  $('app').appendChild(ov);
+  $("app").appendChild(ov);
 
   setTimeout(() => {
     ov.remove();
-    state.romajiOk[k]   = true;
+    state.romajiOk[k] = true;
     state.romajiVals[k] = romaji;
     render();
     checkComplete();
-    const next = state.round.right.find(rk =>
-      rk !== k &&
-      state.matched[state.round.rev[rk]] !== undefined &&
-      !state.romajiOk[rk]
+    const next = state.round.right.find(
+      (rk) =>
+        rk !== k &&
+        state.matched[state.round.rev[rk]] !== undefined &&
+        !state.romajiOk[rk],
     );
     if (next) {
-      const ni = $('r_' + next);
+      const ni = $("r_" + next);
       if (ni) setTimeout(() => ni.focus(), TIMING.FOCUS_DELAY);
     }
   }, TIMING.SURRENDER_HOLD);
@@ -201,15 +459,15 @@ function handleSurrender(k) {
 function handleRomajiInput(inp) {
   const k = inp.dataset.k;
 
-  if (inp.value.includes('?')) {
-    inp.value = '';
-    state.romajiVals[k] = '';
+  if (inp.value.includes("?")) {
+    inp.value = "";
+    state.romajiVals[k] = "";
     handleSurrender(k);
     return;
   }
 
-  const clean  = inp.value.toLowerCase().replace(/[^a-z]/g, '');
-  inp.value    = clean;
+  const clean = inp.value.toLowerCase().replace(/[^a-z]/g, "");
+  inp.value = clean;
   state.romajiVals[k] = clean;
 
   const correct = ROM[state.round.rev[k]];
@@ -219,44 +477,49 @@ function handleRomajiInput(inp) {
     state.score++;
     render();
     checkComplete();
-    const next = state.round.right.find(rk =>
-      rk !== k &&
-      state.matched[state.round.rev[rk]] !== undefined &&
-      !state.romajiOk[rk]
+    const next = state.round.right.find(
+      (rk) =>
+        rk !== k &&
+        state.matched[state.round.rev[rk]] !== undefined &&
+        !state.romajiOk[rk],
     );
     if (next) {
-      const ni = $('r_' + next);
+      const ni = $("r_" + next);
       if (ni) setTimeout(() => ni.focus(), TIMING.FOCUS_DELAY);
     }
   } else if (clean.length >= correct.length) {
     state.streak = 0;
-    inp.classList.add('wrong');
-    setTimeout(() => { state.romajiVals[k] = ''; render(); }, TIMING.WRONG_CLEAR);
+    inp.classList.add("wrong");
+    setTimeout(() => {
+      state.romajiVals[k] = "";
+      render();
+    }, TIMING.WRONG_CLEAR);
   }
 }
 
 function checkComplete() {
   const matchCount = Object.keys(state.matched).length;
-  const romCount   = Object.keys(state.romajiOk).length;
-  const done = opts.mode === 'fast'
-    ? matchCount === ROUND_SIZE
-    : matchCount === ROUND_SIZE && romCount === ROUND_SIZE;
+  const romCount = Object.keys(state.romajiOk).length;
+  const done =
+    opts.mode === "fast"
+      ? matchCount === ROUND_SIZE
+      : matchCount === ROUND_SIZE && romCount === ROUND_SIZE;
   if (!done) return;
 
   setTimeout(() => {
-    const ov = document.createElement('div');
-    ov.className = 'overlay';
+    const ov = document.createElement("div");
+    ov.className = "overlay";
     const perfect = !state.surrendered;
     ov.innerHTML = `<div class="inner">
-      <div class="emoji">${perfect ? '✨' : '💪'}</div>
-      <div class="title">${perfect ? '完璧!' : 'Good job!'}</div>
-      <div class="desc">${perfect ? 'Perfect round!' : 'Keep at it!'}</div>
+      <div class="emoji">${perfect ? "✨" : "💪"}</div>
+      <div class="title">${perfect ? "完璧!" : "Good job!"}</div>
+      <div class="desc">${perfect ? "Perfect round!" : "Keep at it!"}</div>
     </div>`;
-    $('app').appendChild(ov);
+    $("app").appendChild(ov);
 
     setTimeout(() => {
-      const grid = $('grid');
-      if (grid) grid.classList.add('out');
+      const grid = $("grid");
+      if (grid) grid.classList.add("out");
       setTimeout(newRound, TIMING.GRID_OUT_DELAY);
     }, TIMING.CELEBRATION_HOLD);
   }, TIMING.CELEBRATION_DELAY);
@@ -272,102 +535,136 @@ function renderRomajiCell(k, hi, matchColor, matchColorHex) {
   return `<input class="romaji" id="r_${k}" data-k="${k}"
     style="border-color:${matchColor}55"
     placeholder="···"
-    value="${state.romajiVals[k] || ''}"
+    value="${state.romajiVals[k] || ""}"
     autocomplete="off" autocapitalize="off" spellcheck="false">`;
 }
 
 function renderRow(k, ri) {
   const { round, matched, selectedH, selectedK, wrongH, wrongK } = state;
-  const hi    = round.left[ri];
+  const hi = round.left[ri];
   const kHira = round.rev[k];
-  const hM    = matched[hi] !== undefined;
-  const kM    = matched[kHira] !== undefined;
-  const hCol  = hM ? COLORS[matched[hi]] : '';
-  const kCol  = kM ? COLORS[matched[kHira]] : '';
+  const hM = matched[hi] !== undefined;
+  const kM = matched[kHira] !== undefined;
+  const hCol = hM ? COLORS[matched[hi]] : "";
+  const kCol = kM ? COLORS[matched[kHira]] : "";
 
-  const hCls = ['tile', selectedH === hi && 'sel', hM && 'matched', wrongH === hi && 'wrong-h'].filter(Boolean).join(' ');
-  const kCls = ['tile', selectedK === k  && 'sel', kM && 'matched', wrongK === k  && 'wrong-k'].filter(Boolean).join(' ');
+  const hCls = [
+    "tile",
+    hi.length > 1 && "compound",
+    selectedH === hi && "sel",
+    hM && "matched",
+    wrongH === hi && "wrong-h",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const kCls = [
+    "tile",
+    k.length > 1 && "compound",
+    selectedK === k && "sel",
+    kM && "matched",
+    wrongK === k && "wrong-k",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const hCell = `<div class="cell">
-    <button class="${hCls}" style="${hM ? `background:${hCol};color:#fff` : ''}" data-h="${hi}">${hi}</button>
+    <button class="${hCls}" style="${hM ? `background:${hCol};color:#fff` : ""}" data-h="${hi}">${hi}</button>
   </div>`;
   const kCell = `<div class="cell">
-    <button class="${kCls}" style="${kM ? `background:${kCol};color:#fff` : ''}" data-k="${k}">${k}</button>
+    <button class="${kCls}" style="${kM ? `background:${kCol};color:#fff` : ""}" data-k="${k}">${k}</button>
   </div>`;
 
   let romajiCell;
-  if (opts.col1 === 'hira') {
-    romajiCell = kM ? renderRomajiCell(k, kHira, kCol, kCol) : `<div class="blank"></div>`;
+  if (opts.col1 === "hira") {
+    romajiCell = kM
+      ? renderRomajiCell(k, kHira, kCol, kCol)
+      : `<div class="blank"></div>`;
   } else {
     const hK = round.pairs[hi];
-    romajiCell = hM ? renderRomajiCell(hK, hi, hCol, hCol) : `<div class="blank"></div>`;
+    romajiCell = hM
+      ? renderRomajiCell(hK, hi, hCol, hCol)
+      : `<div class="blank"></div>`;
   }
 
-  const cols = opts.col1 === 'hira'
-    ? `${hCell}<div class="divider"><i></i></div>${kCell}`
-    : `${kCell}<div class="divider"><i></i></div>${hCell}`;
+  const cols =
+    opts.col1 === "hira"
+      ? `${hCell}<div class="divider"><i></i></div>${kCell}`
+      : `${kCell}<div class="divider"><i></i></div>${hCell}`;
 
-  const romajiPart = opts.mode === 'full'
-    ? `<div class="divider"><i></i></div><div class="cell">${romajiCell}</div>`
-    : '';
+  const romajiPart =
+    opts.mode === "full"
+      ? `<div class="divider"><i></i></div><div class="cell">${romajiCell}</div>`
+      : "";
 
   return `<div class="row">${cols}${romajiPart}</div>`;
 }
 
 function render() {
   const { score, streak, roundNum, settingsOpen, round } = state;
-  const fast = opts.mode === 'fast';
-  const lbl1 = opts.col1 === 'hira' ? 'ひらがな' : 'カタカナ';
-  const lbl2 = opts.col1 === 'hira' ? 'カタカナ' : 'ひらがな';
+  const fast = opts.mode === "fast";
+  const lbl1 = opts.col1 === "hira" ? "ひらがな" : "カタカナ";
+  const lbl2 = opts.col1 === "hira" ? "カタカナ" : "ひらがな";
 
-  const rows       = round.right.map((k, ri) => renderRow(k, ri)).join('');
-  const streakHTML = streak >= 3 ? `<span class="str">🔥 ${streak}</span>` : '';
+  const rows = round.right.map((k, ri) => renderRow(k, ri)).join("");
+  const streakHTML = streak >= 3 ? `<span class="str">🔥 ${streak}</span>` : "";
 
-  const romajiLabel  = fast ? '' : `<div></div><div class="lbl">Romaji</div>`;
+  const romajiLabel = fast ? "" : `<div></div><div class="lbl">Romaji</div>`;
   // If the overlay is already in the DOM we're just updating options — skip re-animation
-  const settingsAlreadyOpen = !!document.querySelector('#settings-overlay');
-  const settingsHTML = settingsOpen ? `
-    <div class="overlay${settingsAlreadyOpen ? ' no-anim' : ''}" id="settings-overlay">
-      <div class="settings-panel inner${settingsAlreadyOpen ? ' no-anim' : ''}">
+  const settingsAlreadyOpen = !!document.querySelector("#settings-overlay");
+  const settingsHTML = settingsOpen
+    ? `
+    <div class="overlay${settingsAlreadyOpen ? " no-anim" : ""}" id="settings-overlay">
+      <div class="settings-panel inner${settingsAlreadyOpen ? " no-anim" : ""}">
         <div class="settings-title">Settings</div>
         <div class="settings-label">Column 1</div>
         <div class="opt-row">
-          <button class="opt-btn${opts.col1 === 'hira' ? ' opt-active' : ''}" data-opt-col1="hira">ひらがな</button>
-          <button class="opt-btn${opts.col1 === 'kata' ? ' opt-active' : ''}" data-opt-col1="kata">カタカナ</button>
+          <button class="opt-btn${opts.col1 === "hira" ? " opt-active" : ""}" data-opt-col1="hira">ひらがな</button>
+          <button class="opt-btn${opts.col1 === "kata" ? " opt-active" : ""}" data-opt-col1="kata">カタカナ</button>
         </div>
         <div class="settings-label">Mode</div>
         <div class="opt-row">
-          <button class="opt-btn${!fast ? ' opt-active' : ''}" data-opt-mode="full">Full</button>
-          <button class="opt-btn${fast  ? ' opt-active' : ''}" data-opt-mode="fast">Fast</button>
+          <button class="opt-btn${!fast ? " opt-active" : ""}" data-opt-mode="full">Full</button>
+          <button class="opt-btn${fast ? " opt-active" : ""}" data-opt-mode="fast">Fast</button>
+        </div>
+        <div class="settings-label">Dakuten · 濁点</div>
+        <div class="opt-row">
+          <button class="opt-btn${!opts.dakuten ? " opt-active" : ""}" data-opt-dakuten="off">Off</button>
+          <button class="opt-btn${opts.dakuten ? " opt-active" : ""}" data-opt-dakuten="on">On</button>
+        </div>
+        <div class="settings-label">Youon · 拗音</div>
+        <div class="opt-row">
+          <button class="opt-btn${!opts.youon ? " opt-active" : ""}" data-opt-youon="off">Off</button>
+          <button class="opt-btn${opts.youon ? " opt-active" : ""}" data-opt-youon="on">On</button>
         </div>
         <button class="settings-done" id="settings-done">Done</button>
       </div>
-    </div>` : '';
+    </div>`
+    : "";
 
-  $('app').innerHTML = `
+  $("app").innerHTML = `
     <button class="gear-btn" id="gear-btn"><img src="gear.png" alt="Settings"></button>
     <div style="text-align:center;margin-bottom:24px;position:relative;z-index:1">
-      <h1>仮名マッチ II</h1>
-      <div class="sub">${fast ? 'Match the kana' : 'Match · then type the romaji'}</div>
+      <h1>仮名マッチ</h1>
+      <div class="sub">${fast ? "Match the kana" : "Match · then type the romaji"}</div>
       <div class="stats">
         <span>Round <b>${roundNum}</b></span>
         <span>Score <b class="sc">${score}</b></span>
         ${streakHTML}
       </div>
     </div>
-    <div class="board${fast ? ' fast' : ''}">
+    <div class="board${fast ? " fast" : ""}">
       <div class="labels">
         <div class="lbl">${lbl1}</div><div></div>
         <div class="lbl">${lbl2}</div>${romajiLabel}
       </div>
       <div class="grid" id="grid">${rows}</div>
     </div>
-    <div class="hint">${fast ? 'match the pair' : 'match the pair · type the romaji'}</div>
+    <div class="hint">${fast ? "match the pair" : "match the pair · type the romaji"}</div>
     ${settingsHTML}
   `;
 
   if (!fast) {
-    const firstInput = $('app').querySelector('input.romaji');
+    const firstInput = $("app").querySelector("input.romaji");
     if (firstInput) setTimeout(() => firstInput.focus(), TIMING.FOCUS_DELAY);
   }
 }
@@ -375,31 +672,75 @@ function render() {
 // ─── Event delegation (attached once at init) ─────────────────────────────────
 
 function initEvents() {
-  const app = $('app');
+  const app = $("app");
 
-  app.addEventListener('click', e => {
+  app.addEventListener("click", (e) => {
     const t = e.target;
 
-    const hBtn = t.closest('button[data-h]');
-    if (hBtn) { handleHiraTap(hBtn.dataset.h); return; }
+    const hBtn = t.closest("button[data-h]");
+    if (hBtn) {
+      handleHiraTap(hBtn.dataset.h);
+      return;
+    }
 
     // button[data-k] to exclude romaji inputs which also carry data-k
-    const kBtn = t.closest('button[data-k]');
-    if (kBtn) { handleKataTap(kBtn.dataset.k); return; }
+    const kBtn = t.closest("button[data-k]");
+    if (kBtn) {
+      handleKataTap(kBtn.dataset.k);
+      return;
+    }
 
-    if (t.closest('#gear-btn'))      { state.settingsOpen = true;  render(); return; }
-    if (t.closest('#settings-done')) { state.settingsOpen = false; render(); return; }
-    if (t.id === 'settings-overlay') { state.settingsOpen = false; render(); return; }
+    if (t.closest("#gear-btn")) {
+      state.settingsOpen = true;
+      render();
+      return;
+    }
+    if (t.closest("#settings-done")) {
+      state.settingsOpen = false;
+      render();
+      return;
+    }
+    if (t.id === "settings-overlay") {
+      state.settingsOpen = false;
+      render();
+      return;
+    }
 
-    const optBtn = t.closest('[data-opt-col1]');
-    if (optBtn) { opts.col1 = optBtn.dataset.optCol1; saveOpts(); render(); return; }
+    const optBtn = t.closest("[data-opt-col1]");
+    if (optBtn) {
+      opts.col1 = optBtn.dataset.optCol1;
+      saveOpts();
+      render();
+      return;
+    }
 
-    const modeBtn = t.closest('[data-opt-mode]');
-    if (modeBtn) { opts.mode = modeBtn.dataset.optMode; saveOpts(); render(); return; }
+    const modeBtn = t.closest("[data-opt-mode]");
+    if (modeBtn) {
+      opts.mode = modeBtn.dataset.optMode;
+      saveOpts();
+      render();
+      return;
+    }
+
+    const dakutenBtn = t.closest("[data-opt-dakuten]");
+    if (dakutenBtn) {
+      opts.dakuten = dakutenBtn.dataset.optDakuten === "on";
+      saveOpts();
+      render();
+      return;
+    }
+
+    const youonBtn = t.closest("[data-opt-youon]");
+    if (youonBtn) {
+      opts.youon = youonBtn.dataset.optYouon === "on";
+      saveOpts();
+      render();
+      return;
+    }
   });
 
-  app.addEventListener('input', e => {
-    const inp = e.target.closest('input.romaji');
+  app.addEventListener("input", (e) => {
+    const inp = e.target.closest("input.romaji");
     if (inp) handleRomajiInput(inp);
   });
 }
@@ -409,6 +750,6 @@ function initEvents() {
 initEvents();
 newRound();
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
 }
