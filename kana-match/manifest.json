@@ -2,7 +2,7 @@
   "name": "仮名マッチ — Kana Match",
   "short_name": "Kana Match",
   "description": "Match hiragana to katakana and type the romaji",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0f0f1a",
   "theme_color": "#0f0f1a",
