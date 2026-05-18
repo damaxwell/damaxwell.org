@@ -1,4 +1,4 @@
-const CACHE = "kana-v9";
+const CACHE = "kana-v0.9";
 const ASSETS = [
   "./index.html",
   "./style.css",

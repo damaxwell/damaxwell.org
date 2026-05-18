@@ -644,7 +644,7 @@ function render() {
   $("app").innerHTML = `
     <button class="gear-btn" id="gear-btn"><img src="gear.png" alt="Settings"></button>
     <div style="text-align:center;margin-bottom:24px;position:relative;z-index:1">
-      <h1>仮名マッチ</h1>
+      <h1>仮名マッチ v0.9</h1>
       <div class="sub">${fast ? "Match the kana" : "Match · then type the romaji"}</div>
       <div class="stats">
         <span>Round <b>${roundNum}</b></span>
