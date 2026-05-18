@@ -30,7 +30,19 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   if (e.request.mode === "navigate") {
     e.respondWith(
-      caches.match("./index.html").then((r) => r || fetch(e.request)),
+      caches.match("./index.html").then((r) => {
+        if (r) return r;
+        return fetch(e.request).then((response) => {
+          if (response.redirected) {
+            return new Response(response.body, {
+              status: response.status,
+              statusText: response.statusText,
+              headers: response.headers,
+            });
+          }
+          return response;
+        });
+      }),
     );
     return;
   }
