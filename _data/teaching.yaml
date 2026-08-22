@@ -1,3 +1,10 @@
+- term: "Fall 2026"
+  courses:
+    - title: "Math F404: Topology"
+      url: "Fall2026/math404"
+    - title: "ES/Math F186: Applied Engineering Mathematics"
+      external-url: "https://canvas.alaska.edu/courses/33912"
+
 - term: "Spring 2025"
   courses:
     - title: "Math F314: Linear Algebra"
