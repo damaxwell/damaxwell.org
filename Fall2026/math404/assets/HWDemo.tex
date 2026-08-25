@@ -1,10 +1,10 @@
-\documentclass[minion]{homework}
+\documentclass{homework}
 
 % The following commands set up the material that appears
 % in the header.
-\doclabel{Math 651: Demo Homework}
+\doclabel{Math 404: Demo Homework}
 \docauthor{Your name here.}
-\docdate{January 17, 2022}
+\docdate{August 24, 2026}
 
 % Some common macros
 \newcommand{\Reals}{\ensuremath{\mathbb R}}% Gives you a shortcut for writing the blackboard R for the real numbers - \RR
@@ -47,18 +47,18 @@ Let $T=\tau_1\cup \tau_2 = \{\emptyset, \{1\}, \{2\}, X\}$.   Observe that $T$ i
 taking unions as $\{1\}$ and $\{2\}$ are elements of $T$ but $\{1,2\}$ is not.
 
 \problem Exercise 0.3 \solver{Elizabeth Allman}
-Let $X$ be a metric space.  Showt that 
+Let $X$ be a metric space.  Show that 
 the collection of open balls in $X$ forms the basis of a topology.
 
 \solution
 We start with a technical lemma.
 \begin{lemma}{A}\label{lem:DAMrefine}  
 Suppose $B_1=B_{r_1}(x_1)$ and $B_2=B_{r_2}(x_2)$ are 
-open balls in $X$ an $x_3\in B_1\cap B_2$.  Then there is an $r>0$ such
+open balls in $X$ and $x_3\in B_1\cap B_2$.  Then there is an $r>0$ such
 that $B_r(x_3)\subseteq B_1\cap B_2$.
 \end{lemma}
 \begin{proof}
-Let $r = \min(r_1-d(x_3,x_1),r_2-d(x-2,x_2)$ and observe that $r>0$.  Now suppose
+Let $r = \min(r_1-d(x_3,x_1),r_2-d(x_3,x_2)$ and observe that $r>0$.  Now suppose
 $z\in B_{r}(x_3)$.  The triangle inequality implies
 \begin{align*} 
 d(x_1,z)&\le d(x_1,x_3) + d(x_3,z) \\

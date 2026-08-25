@@ -4,43 +4,49 @@
 \newif\ifusingminion \usingminionfalse
 \DeclareOption{minion}{\usingminiontrue}
 
-% Option noname controls whether the student name should appear in
-% the header or not.  By default it does.
-\newif\ifhandout \handoutfalse
-\DeclareOption{handout}{\handouttrue}
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass[12pt]{article} 
 
-\RequirePackage{color}
-\newcommand{\exercise}[1]{\textbf{\color{blue}Exercise #1}}
-
 \RequirePackage{amssymb,amsmath,amsthm}
 \RequirePackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
 
-\IfFileExists{MinionPro.sty}{}{\usingminionfalse}
+% ---------------------------------------------------------------------
+%% Font cascade: MinionPro (opt-in) -> newtx -> CM.
+%% Each stage falls through if the package isn't installed, so the class
+%% still compiles on a machine that isn't mine.
+%% ---------------------------------------------------------------------
+\RequirePackage[T1]{fontenc}
+\newif\ifhw@fontset \hw@fontsetfalse
+
 \ifusingminion
-\RequirePackage[lf]{MinionPro}
-%% Error message wierdness from the MinionPro package.  The following line fixes it. I don't know why.
-\let\mathdollar\undefined 
-\else
-\usepackage{times,txfonts}
+  \IfFileExists{MinionPro.sty}{%
+    \RequirePackage[lf]{MinionPro}%
+    %% MinionPro leaves \mathdollar in a state amsmath objects to.
+    \let\mathdollar\undefined
+    \hw@fontsettrue
+  }{%
+    \ClassWarningNoLine{homework}{Option `minion' requested but
+      MinionPro.sty was not found; falling back}%
+  }%
 \fi
 
-\parindent 0pt
-\parskip 6pt plus 1pt
+\ifhw@fontset\else
+  \IfFileExists{newtxtext.sty}{\IfFileExists{newtxmath.sty}{%
+    \RequirePackage{newtxtext}%
+    \RequirePackage{newtxmath}%
+    \hw@fontsettrue
+  }{}}{}%
+\fi
 
-\newtheoremstyle{ex215}% name of the style to be used
-  {18pt}% measure of space to leave above the theorem. E.g.: 3pt
-  {12pt}% measure of space to leave below the theorem. E.g.: 3pt
-  {}% name of font to use in the body of the theorem
-  {}% measure of space to indent
-  {\bfseries}% name of head font
-  {:}% punctuation between head and body
-  {2ex}% space after theorem head; " " = normal interword space
-  {}% Manually specify head
-\theoremstyle{ex215} 
+\ifhw@fontset\else
+  \ClassWarningNoLine{homework}{Package newtx not found;
+    falling back to Computer Modern}%
+\fi
+
+\RequirePackage{microtype}
+
+\RequirePackage[skip=6pt plus 1pt minus 1pt, indent=0pt, parfill]{parskip}
 
 \newtheorem*{theoremcore}{Theorem \@currentlabel}
 \newenvironment{theorem}[1]
@@ -62,11 +68,10 @@
 {\def\@currentlabel{#1}\corollarycore}
 {\endcorollarycore}
 
-
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyfoot[C]{\ifnum \value{page} > 1\relax\thepage\fi}
-\fancyhead[L]{\ifx\@doclabel\@empty\else\@doclabel\fi}
+\fancyhead[L]{\@doclabel}
 \fancyhead[C]{\ifx\@docauthor\@empty\else\@docdate\fi}
 \fancyhead[R]{\ifx\@docauthor\@empty\@docdate\else\@docauthor\fi}
 \headheight 15pt
@@ -86,61 +91,27 @@
 \newlength\pshrinking
 \newif\iffirstprob
 
-% The following commands allow for a handy override of labels in an enumeration,
-% without having the user keep track of what level the enumeration is happening at.
-% To use them, just put \listlabel{....} as the first command after a \begin{enumerate}.
-% The '....' is used to define the label.  You can access the name of the current label
-% counter with \thelistlabel.  Hence \listlabel{\textbf{\Alph{\thelistlabel}:}} would
-% generate lists with bold labels A:, B:, C:, etc.
-\newcommand{\listlabel}[1]{\def\thelistlabel{\@enumctr}%
-            \expandafter\def\csname label\@enumctr\endcsname{#1}}
 
+\RequirePackage{enumitem}
+\newlist{problems}{enumerate}{1}
+\setlist[problems]{%
+  label=\textbf{\arabic*.},
+  ref=\arabic*,
+  leftmargin=*, widest=9,
+  topsep=\parskip, itemsep=\parskip, parsep=\parskip,
+  listparindent=\z@}
+\newcommand{\problem}{\setcounter{subprobcount}{0}\item}
 
-\newenvironment{subproblems}%
-  {\begin{enumerate}\listlabel{\alph{\thelistlabel})}%
-  %% Make the enumerate environment think we are making a list in a list:
-  \global \@newlistfalse}%
-  {\end{enumerate}}%
+\newlist{subproblems}{enumerate}{2}
+\setlist[subproblems]{label=\alph*), nosep, labelindent=1.5em, leftmargin=*}
 
-\newenvironment{problems}%
-  {\ifhmode\unskip\par\fi\setcounter{probcount}{0}\probsep\parskip
-  \sbox\@tempboxa{\textbf{9.}}\pshrinking\wd\@tempboxa\advance\pshrinking\labelsep
-  \advance\linewidth -\pshrinking
-  \advance\@totalleftmargin\pshrinking
-  \advance\leftskip\pshrinking}%
-  {\ifhmode\unskip \par\fi\advance\leftskip-\pshrinking}%
-\newcommand{\foo}{Foo!}
-
-\newcommand{\problem}{%
-  \setcounter{subprobcount}{0}%
-  \stepcounter{probcount}%
-  \def\@currentlabel{\arabic{probcount}}%
-  \ifhmode
-    \unskip \par
-  \fi
-%  \addpenalty{-4000}%
-  \iffirstprob\else\addvspace\probsep\fi
-  \firstprobfalse
-  \hskip -\labelwidth\hskip -\labelsep 
-  \hbox to\labelwidth{\hss\textbf{\arabic{probcount}.}}\hskip\labelsep
-}%
-
-%% The localhead command puts a label on top of a paragraph -- handy for labels
+%% The localhead command puts a tightly bound label on top of a paragraph -- handy for labels
 %% like "Solution:"
-\newskip\restoreparskip
 \newcommand{\localhead}[1]{\par\smallskip\textbf{#1}\nobreak\\}%
-%% The following arcane code was added to make the localhead enviroment get along
-%% with the ams theorem enviroment (which is based on the latex list enviroment).
-%% previously, the command was {\par\smallskip\textbf{#1}\\}, but the list
-%% enviroment would also add a par at the end of this paragraph, which would result
-%% in an extra blank line.  Our solution now is to put in our own par, but with
-%% none of the parskip glue that adds extra space between paragraphs.
-%%  \restoreparskip\parskip\parskip 0pt\par\nobreak\noindent\parskip\restoreparskip}%
 \newcommand\solution{\localhead{Solution:}}
 \newcommand\subsol{\stepcounter{subprobcount}\localhead{Solution, part \alph{subprobcount}:}}
 \newcommand\subsoleg[1]{\stepcounter{subprobcount}\par\textbf{Solution, part \alph{subprobcount}:} #1\\}
-\def\solver#1{(Solution by #1)\\\vskip-12pt}
-
+\def\solver#1{(Solution by #1)\\\vskip-\parskip}
 
 %% The default 'article' class has captions that label figures Figure 1, etc.  This is too 
 %% formal for homework sets, so we change \caption so that it just puts the caption text.
