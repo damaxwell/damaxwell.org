@@ -32,6 +32,15 @@
 \fi
 
 \ifhw@fontset\else
+  \IfFileExists{libertinus.sty}{\IfFileExists{libertinust1math.sty}{%
+    \RequirePackage{libertinus}%
+    \RequirePackage{libertinust1math}%
+    \hw@fontsettrue
+  }{}}{}%
+\fi
+
+
+\ifhw@fontset\else
   \IfFileExists{newtxtext.sty}{\IfFileExists{newtxmath.sty}{%
     \RequirePackage{newtxtext}%
     \RequirePackage{newtxmath}%
@@ -40,7 +49,7 @@
 \fi
 
 \ifhw@fontset\else
-  \ClassWarningNoLine{homework}{Package newtx not found;
+  \ClassWarningNoLine{homework}{Package libertinus or newtx not found;
     falling back to Computer Modern}%
 \fi
 
@@ -111,7 +120,7 @@
 \newcommand\solution{\localhead{Solution:}}
 \newcommand\subsol{\stepcounter{subprobcount}\localhead{Solution, part \alph{subprobcount}:}}
 \newcommand\subsoleg[1]{\stepcounter{subprobcount}\par\textbf{Solution, part \alph{subprobcount}:} #1\\}
-\def\solver#1{(Solution by #1)\\\vskip-\parskip}
+\def\solver#1{(Solution by #1)\par}
 
 %% The default 'article' class has captions that label figures Figure 1, etc.  This is too 
 %% formal for homework sets, so we change \caption so that it just puts the caption text.
