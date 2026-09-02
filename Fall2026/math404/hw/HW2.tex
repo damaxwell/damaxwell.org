@@ -1,0 +1,54 @@
+\documentclass[minion]{homework}
+
+% Some common macros
+\newcommand{\Reals}{\ensuremath{\mathbb R}}% Gives you a shortcut for writing the blackboard R for the real numbers - \RR
+\newcommand{\Rats}{\ensuremath{\mathbb Q}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Nats}{\ensuremath{\mathbb N}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Ints}{\ensuremath{\mathbb Z}} % Gives you a shortcut for writing the blackboard Z for the integer numbers - \ZZ
+
+\doclabel{Math F404: Homework 1}
+\docdate{Due: September 8, 2026}
+
+\begin{document}
+\begin{problems}
+\problem Sutherland 4.1
+
+\problem Sutherland 4.2
+
+\problem \textbf{(AI Free)}
+
+Let $A\subset \Reals$ be a nonempty set that is bounded above.
+Let $m=\sup A$.  Show that for every $\epsilon>0$ there exists $a\in A$
+with $m-\epsilon < a \le m$.
+
+\problem Suppose $(x_n)$ is a sequence converging to a limit $x$.
+\begin{subproblems}
+\item Show that $(x_{n+1})$ converges to the same limit.
+\item Show that if $c\in\Reals$ then $(cx_{n})$ converges to $c x$.
+\end{subproblems}
+
+\problem Suppose $a\in\Reals$ and suppose $a^n\to L$. 
+Use the previous problem to show that either $L=0$ or 
+$a=1$ (in which case $L=1$).
+
+\problem Suppose $0<a<1$.  Use the monotone convergence theorem 
+to show $a^n\to 0$. Hint: the previous
+problem could be helpful.
+
+\problem 
+\begin{subproblems}
+\item Knowing that $\sqrt{2}$ is irrational, show that $q\sqrt{2}$ 
+is irrational for all $q\in \Rats$.
+\item  Sutherland 4.8. \textbf{Hint:} consider $a/\sqrt{2}$ and $b/\sqrt{2}$ as endpoints first.
+\end{subproblems}
+ 
+\problem Show directly from the definition that $x_n = (-1)^n$ is not 
+Cauchy and conclude that it does not converge.
+
+\problem Sutherland 4.12 \textbf{Hint:} For simplicity, 
+assume $f$ and $g$ are defined on all of $\Reals$, and take $f$ 
+to be really boring.
+
+\end{problems}
+
+\end{document}
