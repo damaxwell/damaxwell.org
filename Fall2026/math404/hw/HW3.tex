@@ -1,0 +1,49 @@
+\documentclass[minion]{homework}
+
+% Some common macros
+\newcommand{\Reals}{\ensuremath{\mathbb R}}% Gives you a shortcut for writing the blackboard R for the real numbers - \RR
+\newcommand{\Rats}{\ensuremath{\mathbb Q}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Nats}{\ensuremath{\mathbb N}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Ints}{\ensuremath{\mathbb Z}} % Gives you a shortcut for writing the blackboard Z for the integer numbers - \ZZ
+
+\doclabel{Math F404: Homework 3}
+\docdate{Due: September 15, 2026}
+
+\begin{document}
+\begin{problems}
+
+\problem  Suppose $(x_n)$ is a real sequence and $x_n\to \ell > 0$.
+Show that there exists $N$ so that if $n\ge N$ then $x_n>\ell/2$.
+Then show $1/x_n \to 1/\ell$. Note that the sequence $1/x_n$ is 
+perhaps only defined for $n\ge N$ to avoid division by zero.
+
+\problem Suppose $\Omega\subset\Reals$, that $a$ is a limit point of $\Omega$, 
+and that $f:\Omega\to\Reals$.  Show that $\lim_{x\to a}f(x) =\ell$ if
+and only if whenever $(x_n)$ is a sequence in $\Omega$ converging to $a$,
+$f(x_n) \to \ell$.  You are encouraged to modify the similar proof seen in 
+class on the sequential characterization of continuity.
+
+\problem Sutherland 4.13
+
+\problem Sutherland 4.14 \textbf{(AI Free)}
+
+\problem Sutherland 4.15
+
+\problem Use Definition 4.21 and no more advanced tools to directly show 
+\[
+\lim_{x\to 1} \frac{1}{x^2+1} = \frac{1}5.
+\]
+That is, start your proof with "Let $\epsilon>0$", exhibit a candidate
+$\delta$, and show that your candidate works.
+
+\problem For $x,y\in \Reals$ define $d(x,y) = |y-x|$.  
+Show that a sequence of real numbers $(x_n)$ converges to 
+a limit $\ell$ if and only if $d(x_n, \ell)\to 0$.
+
+\problem Sutherland 5.1
+
+\problem AI Use. Please describe specifically how you used AI to help complete this assignment.
+
+\end{problems}
+
+\end{document}
