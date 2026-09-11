@@ -19,7 +19,7 @@ perhaps only defined for $n\ge N$ to avoid division by zero.
 
 \problem Suppose $\Omega\subset\Reals$, that $a$ is a limit point of $\Omega$, 
 and that $f:\Omega\to\Reals$.  Show that $\lim_{x\to a}f(x) =\ell$ if
-and only if whenever $(x_n)$ is a sequence in $\Omega$ converging to $a$,
+and only if whenever $(x_n)$ is a sequence in $\Omega\setminus\{a\}$ converging to $a$,
 $f(x_n) \to \ell$.  You are encouraged to modify the similar proof seen in 
 class on the sequential characterization of continuity.
 
@@ -31,7 +31,7 @@ class on the sequential characterization of continuity.
 
 \problem Use Definition 4.21 and no more advanced tools to directly show 
 \[
-\lim_{x\to 1} \frac{1}{x^2+1} = \frac{1}5.
+\lim_{x\to 2} \frac{1}{x^2+1} = \frac{1}5.
 \]
 That is, start your proof with "Let $\epsilon>0$", exhibit a candidate
 $\delta$, and show that your candidate works.
