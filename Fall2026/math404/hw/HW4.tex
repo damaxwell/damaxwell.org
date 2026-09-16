@@ -1,0 +1,55 @@
+\documentclass[minion]{homework}
+
+% Some common macros
+\newcommand{\Reals}{\ensuremath{\mathbb R}}% Gives you a shortcut for writing the blackboard R for the real numbers - \RR
+\newcommand{\Rats}{\ensuremath{\mathbb Q}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Nats}{\ensuremath{\mathbb N}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Ints}{\ensuremath{\mathbb Z}} % Gives you a shortcut for writing the blackboard Z for the integer numbers - \ZZ
+
+\doclabel{Math F404: Homework 4}
+\docdate{Due: September 22, 2026}
+
+\begin{document}
+\begin{problems}
+
+\problem On the previous homework you prove Sutherland 5.1.  Use that result to prove the following.
+
+Let $X$ be a metric space and fix $x_0\in X$.  Show that function $f:X\to\Reals$
+defined by $f(x) = d(x,x_0)$ is continuous.
+
+\problem Sutherland 5.5
+
+\problem Sutherland 5.6
+
+\problem Sutherland 5.8
+
+\problem Sutherland 5.10
+
+\problem Sutherland 5.13
+
+\problem Let $X$ be a set endowed with the discrete metric $d_{\mathrm{disc}}$.
+Show that a sequence $(x_n)$ in $X$ converges to a limit $x$ if and only
+if there is $N\in \Nats$ such that if $n\ge N$ then $x_n = x$.  
+That is: the convergent sequences are exactly the eventually constant sequences.
+
+\problem Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces.  Show that
+a sequence $(x_n,y_n)$ in $X\times Y$ converges to a limit $(x,y)$
+if and only if $x_n\to x$ and $y_n\to Y$.
+
+\problem Suppose $(x_n)$ is a sequence in a metric space $(X,d)$.
+Show that if $x\in X$ and if there is an $\epsilon>0$ such
+that $d(x,x_n)\ge \epsilon$ for all $n$ then $x_n\not\to x$.
+
+\problem Modify the proof from class for real valued functions to show 
+the following. 
+
+Suppose $(X,d_X)$ and $(Y, d_Y)$ are metric spaces, that 
+$f:X\to Y$ and that $a\in X$. Then $f$ is continuous at $a$ if and 
+only if for every sequence $(x_n)$ in $X$ converging to $x$, $f(x_n)\to f(a)$
+in $Y$.
+
+\problem AI Use. Please describe specifically how you used AI to help complete this assignment.
+
+\end{problems}
+
+\end{document}
