@@ -9,6 +9,8 @@ Projects, in various degrees of completion,
 with essentially nothing in common.
 
 {% capture curio_card %}
+* ES/MATH 186 [Lab 2](es-math-lab2) (updated from Wright State EGR1010 [Lab 2](https://distance.cecs.wright.edu/#/egr1010/lab2)).
+
 * A proof of concept derivative [practice tool](dprof/dprof.html).
 
 * [Notes](assets/InvariantMechanics.pdf) on a coordinate-free approach to classical mechanics.
