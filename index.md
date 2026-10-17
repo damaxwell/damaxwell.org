@@ -67,13 +67,9 @@ is_root: true
 	</table>
 
 	<p>
-	In the last couple of years generative AI, and Large Language Models (LLMs) especially, have captured the public's attention. We've all used ChatGPT and friends by now. But how do they operate? </p>
+    Large language models have evolved rapidly over the last couple of years: they are no longer just chatbots. Although the core architecture of LLMs remains essentially the same, a single addition, the notion of a tool call along with additional training, turns a model into an agent.</p> 
 
-	<p>
-	In this talk I aim to provide a good mental model of what is happening in the background when interacting with an LLM. I'll give an overview of how LLMs work broadly, and then dive a bit into the details of GPT-2.0, the precursor to the GPT models we use today. In particular, I'll discuss the transformer architecture, which is the foundation technology driving the current generative AI revolution.</p>
-	
-	<p>
-	This will be a broadly accessible talk, aimed at a general STEM audience.	</p>
+    <p>Using tool calls an LLM can initiate actions and take subsequent steps based on the outcomes of those actions. During the talk we'll review the forward pass at the heart of an LLM and then demonstrate (via interactive fiction from the 1980s!) how tool calls layered on top produce agentic behavior. The second half of the talk consists of demonstrations: coding, connecting models to data sources with the Model Context Protocol, and general knowledge work. Time will be reserved at the end for discussion.</p>
 </div>
 
 <div class="card">
