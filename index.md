@@ -54,6 +54,29 @@ is_root: true
 ## Presentations
 
 <div class="card">
+<h3>Agentic AI and its Applications in 2026</h3>
+
+<b>UAF Math Colloquium</b><br />
+<b>Time:</b> 3:30pm-4:30pm<br />
+<b>Dates:</b> October 16, 2026<br />
+
+<p />
+	<table class="asst-table">
+		<tr><td>Lecture:</td><td><a href="llm/UAF-Agents-2026.pdf">Slides</a></td><td><a href="https://media.uaf.edu/media/t/1_y6x0bt1a">Video</a></td>
+		</tr>
+	</table>
+
+	<p>
+	In the last couple of years generative AI, and Large Language Models (LLMs) especially, have captured the public's attention. We've all used ChatGPT and friends by now. But how do they operate? </p>
+
+	<p>
+	In this talk I aim to provide a good mental model of what is happening in the background when interacting with an LLM. I'll give an overview of how LLMs work broadly, and then dive a bit into the details of GPT-2.0, the precursor to the GPT models we use today. In particular, I'll discuss the transformer architecture, which is the foundation technology driving the current generative AI revolution.</p>
+	
+	<p>
+	This will be a broadly accessible talk, aimed at a general STEM audience.	</p>
+</div>
+
+<div class="card">
 <h3>How Large Language Models Operate</h3>
 
 <b>UAF Math Colloquium</b><br />
