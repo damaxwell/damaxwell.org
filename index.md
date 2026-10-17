@@ -58,7 +58,7 @@ is_root: true
 
 <b>UAF Math Colloquium</b><br />
 <b>Time:</b> 3:30pm-4:30pm<br />
-<b>Dates:</b> October 16, 2026<br />
+<b>Date:</b> October 16, 2026<br />
 
 <p />
 	<table class="asst-table">
