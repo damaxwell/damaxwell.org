@@ -1,6 +1,6 @@
-const VERSION = "823a86c0b2";
+const VERSION = "9e79ded00e";
 const BASE = "/nihongo/";
-const PRECACHE = ["","index.html","rectest.html","assets/main-CBVxG3kB.js","assets/rectest-BLTRgo-p.js","assets/modulepreload-polyfill-P2Xu9kJm.js","assets/main-BrDqsx4H.css","manifest.webmanifest","icons/apple-touch-icon.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","icons/icon.svg"];
+const PRECACHE = ["","index.html","rectest.html","assets/main-nR-umwBd.js","assets/rectest-BLTRgo-p.js","assets/modulepreload-polyfill-P2Xu9kJm.js","assets/main-BrDqsx4H.css","manifest.webmanifest","icons/apple-touch-icon.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","icons/icon.svg"];
 
 const SHELL = 'shell-' + VERSION;
 const DICT = 'dict-v1';
