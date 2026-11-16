@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="/nihongo/manifest.webmanifest" />
+  <title>Recognition Test</title>
+  <style>:root{--bg:#fff;--fg:#111;--muted:#666;--lightningcss-light:initial;--lightningcss-dark: ;color-scheme:light dark}@media (prefers-color-scheme:dark){:root{--lightningcss-light: ;--lightningcss-dark:initial;--bg:#111;--fg:#eee;--muted:#999}}body{background:var(--bg);color:var(--fg);padding:max(16px, env(safe-area-inset-top)) 16px 16px;margin:0;font:15px/1.4 -apple-system,system-ui,sans-serif}button{font:inherit;border-radius:10px;margin:4px 4px 4px 0;padding:10px 16px}#env{color:var(--muted);font-size:13px}#log{white-space:pre-wrap;margin-top:12px;font:12px/1.45 ui-monospace,Menlo,monospace}.final{color:#2a2}.err{color:#d33}.ev{color:var(--muted)}</style>
+  <script type="module" crossorigin src="/nihongo/assets/rectest-BLTRgo-p.js"></script>
+  <link rel="modulepreload" crossorigin href="/nihongo/assets/modulepreload-polyfill-P2Xu9kJm.js">
+</head>
+<body>
+  <h2>Recognition test <a href="/nihongo/" style="font-size:15px">← app</a></h2>
+  <div id="env"></div>
+  <label><input type="checkbox" id="auto" checked /> auto-restart on end</label>
+  <label><input type="checkbox" id="cont" checked /> continuous</label>
+  <div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="clear">Clear</button>
+    <button id="kick">Wake mic (getUserMedia)</button>
+    <button id="hold">Hold mic open</button>
+    <button id="release">Release mic</button>
+    <button id="reload">Reload page</button>
+  </div>
+  <div id="log"></div>
+</body>
+</html>

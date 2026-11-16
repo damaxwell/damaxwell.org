@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b1640" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="読む" />
+  <link rel="manifest" href="/nihongo/manifest.webmanifest" />
+  <link rel="icon" href="/nihongo/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/nihongo/icons/apple-touch-icon.png" />
+  <title>日本語を読む</title>
+  <script type="module" crossorigin src="/nihongo/assets/main-CBVxG3kB.js"></script>
+  <link rel="modulepreload" crossorigin href="/nihongo/assets/modulepreload-polyfill-P2Xu9kJm.js">
+  <link rel="stylesheet" crossorigin href="/nihongo/assets/main-BrDqsx4H.css">
+</head>
+<body>
+  <main id="home" class="screen" hidden>
+    <button id="gear" class="gear" aria-label="Settings">⚙︎</button>
+    <div class="brand">
+      <img src="/nihongo/icons/icon.svg" alt="" width="96" height="96" />
+      <h1 lang="ja">日本語を読む</h1>
+      <p class="sub">Read it. Say it.</p>
+    </div>
+    <button id="start" class="big">Start</button>
+    <p id="phrase-status" class="status"></p>
+    <p id="dict-status" class="status"></p>
+  </main>
+
+  <main id="drill" class="screen" hidden>
+    <header class="topbar">
+      <div class="tally"><span class="ok">✓ <b id="tally-ok">0</b></span><span class="bad">✗ <b id="tally-bad">0</b></span><span id="progress" class="prog"></span></div>
+      <button id="mic" class="mic" data-state="off" aria-label="Microphone status"><i></i><span id="mic-label">mic off</span></button>
+      <button id="gear2" class="gear small" aria-label="Settings">⚙︎</button>
+      <button id="stop" class="stop">Stop</button>
+    </header>
+    <section class="stage">
+      <div id="phrase" class="phrase" lang="ja"></div>
+      <div class="countdown"><div id="bar" class="bar"></div></div>
+      <div id="reveal" class="reveal">
+        <div id="english" class="english"></div>
+        <div id="romaji" class="romaji"></div>
+      </div>
+      <button id="tap-speak" class="big tap-only">🎤 Tap to speak</button>
+      <p id="mic-help" class="status" hidden>Microphone or speech recognition is blocked. Allow it in Settings → Safari (or Siri &amp; Dictation), then reload.</p>
+      <pre id="debug" class="debug" hidden></pre>
+      <pre id="miclog" class="debug" hidden></pre>
+    </section>
+    <div id="paused" class="overlay" hidden>
+      <button id="resume" class="big">Resume</button>
+    </div>
+  </main>
+
+  <main id="done" class="screen" hidden>
+    <h2>お疲れ様でした</h2>
+    <div id="final" class="final"></div>
+    <button id="again" class="big">Start again</button>
+    <button id="home-btn" class="link">Home</button>
+  </main>
+
+  <main id="unsupported" class="screen" hidden>
+    <h2>Speech recognition isn't available</h2>
+    <p class="status">This browser doesn't support the Web Speech API. On iPhone, use Safari (iOS 14.5 or later) and make sure Siri &amp; Dictation is enabled.</p>
+  </main>
+
+  <dialog id="settings">
+    <h3>Settings</h3>
+    <label class="row">Countdown <span id="set-countdown-val"></span>
+      <input id="set-countdown" type="range" min="3" max="30" step="1" /></label>
+    <fieldset class="row"><legend>Listening</legend>
+      <label><input type="radio" name="mode" id="set-mode-cont" /> Continuous</label>
+      <label><input type="radio" name="mode" id="set-mode-tap" /> Tap to speak</label>
+    </fieldset>
+    <label class="row check"><input id="set-debug" type="checkbox" /> Show transcript (debug)</label>
+    <button id="settings-close" class="big small-big">Done</button>
+    <p class="row"><a href="/nihongo/rectest.html" style="color: var(--muted)">Recognition test page</a></p>
+  </dialog>
+
+</body>
+</html>
