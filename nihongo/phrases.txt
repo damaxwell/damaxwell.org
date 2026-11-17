@@ -61,3 +61,10 @@
 飲みません。|のみません|nomimasen.|I'm not going to drink.
 飲みます。|のみます|nomimasu.|I'm going to drink.
 食べません。|たべません|tabemasen.|I'm not going to eat.
+
+# 1.6 Food
+あとで食べます。|あとでたべます|atode tabemasu.|I'm going to eat later.
+どこで食べますか。|どこでたべますか|doko de tabemasu ka?|Where are you going to eat?
+カフェで 何か飲みませんか。|かふぇでなにかのみませんか|kafe de nanika nomimasen ka?|Won't you drink something at the café?
+私は食べます。|わたしはたべます|watashi wa tabemasu.|As for me, I'm going to eat.
+今食べません。|いまたべません|ima tabemasen.|I'm not going to eat now.
