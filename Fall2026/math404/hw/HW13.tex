@@ -1,0 +1,59 @@
+\documentclass[minion]{homework}
+
+% Some common macros
+\newcommand{\Reals}{\ensuremath{\mathbb R}}% Gives you a shortcut for writing the blackboard R for the real numbers - \RR
+\newcommand{\Rats}{\ensuremath{\mathbb Q}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Nats}{\ensuremath{\mathbb N}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Ints}{\ensuremath{\mathbb Z}} % Gives you a shortcut for writing the blackboard Z for the integer numbers - \ZZ
+
+\doclabel{Math F404: Homework 11}
+\docdate{Due: November 17, 2026}
+
+\begin{document}
+\begin{problems}
+
+\problem Sutherland 12.2
+
+\problem Sutherland 12.3
+
+\problem Sutherland 12.5
+
+\problem Sutherland 12.6
+
+\problem Sutherland 12.7
+
+\problem Sutherland 12.8 
+
+\problem Sutherland 12.12
+
+\problem Sutherland 12.13
+
+\problem Let $X$ be the the set $\{(x,\sin(\pi/x))\in \Reals^2: 0<x\le 1\Ints\}$
+and let $X^*=X\cup (0,1)$.  On this assignment and the next you will show
+that $X^*$ is not path connected.
+
+We'll denote
+$(0,1)=*$.  Consider a path $\gamma:[0,1]\to X^*$ with $\gamma(0)=*$ 
+The goal is to show that $\gamma$ is constant and hence there 
+is no path from $*$ to any other point in $X^*$.
+
+Here are the first few steps.
+
+\begin{subproblems}
+\item Let $A = \gamma^{-1}(\{*\})$. Show that if $A$ is both open and 
+closed in $[0,1]$ then $\gamma(t)=*$ for all $t\in [0,1]$.
+\item Show that $A$ is closed. (Hence to complete the proof we'll also show $A$ is open.)
+\item Let $B= X^* \cap (\Reals\times (0,\infty))$. Make a sketch of $B$ and show that $B$ 
+is open in $X^*$.
+\item Let $C=\pi(B)$
+where $\pi$ is projection onto the $x$-axis.  Write down 
+the set $C$ explicitly as a disjoint union of open intervals along 
+with the single point $0$.
+\end{subproblems}
+
+
+\problem AI Use. Please describe specifically how you used AI to help complete this assignment.
+
+\end{problems}
+
+\end{document}
