@@ -67,7 +67,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
 @keyframes lf { 0% { opacity: 0; transform: scale(.9); } 20% { opacity: 1; transform: scale(1); } 80% { opacity: 1; } 100% { opacity: 0; } }
 
 .drop { position: absolute; left: 0; top: 0; width: var(--cell); height: var(--cell); display: grid; place-items: center; font-family: var(--f-kana); font-weight: 700; font-size: calc(var(--cell) * .78); line-height: 1; color: var(--kana); will-change: transform; text-shadow: 0 2px 14px rgba(0,0,0,.35); }
-.drop.wide { width: calc(var(--cell) * 1.6); font-size: calc(var(--cell) * .66); letter-spacing: -.04em; }
+.drop.wide { font-size: calc(var(--cell) * .66); letter-spacing: -.04em; }
+.drop .ro.two { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
+.drop .ro .rk { font-family: var(--f-kana); }
 .drop .ro { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); font-family: var(--f-mono); font-size: 15px; font-weight: 700; opacity: 0; white-space: nowrap; }
 .drop.low { color: #fff; }
 .drop.pop { color: var(--hit); text-shadow: 0 0 18px rgba(111,211,193,.55); animation: pop 1.1s ease-in forwards; }
@@ -110,7 +112,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
 .demo span { position: absolute; top: -50px; font-family: var(--f-kana); font-weight: 700; font-size: 38px; color: var(--kana); opacity: .9; animation: demo linear infinite; }
 @keyframes demo { to { transform: translateY(190px); } }
 .label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: var(--indigo-2); border: 1px solid var(--indigo-3); }
+.seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: var(--indigo-2); border: 1px solid var(--indigo-3); }
 .seg button { border: 0; background: transparent; border-radius: 10px; padding: 12px 4px; font-size: 15px; font-weight: 600; color: var(--muted); }
 .seg button .k { font-family: var(--f-kana); font-weight: 700; }
 .seg button[aria-pressed="true"] { background: var(--indigo-3); color: var(--kana); box-shadow: inset 0 0 0 1px rgba(244,201,93,.5); }
@@ -151,6 +153,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
 .cell .r { font-family: var(--f-mono); font-size: 10px; color: var(--muted); }
 .cell .t { font-family: var(--f-mono); font-size: 9px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .cell.wide { aspect-ratio: auto; height: 76px; }
+.cell.long .k { font-size: clamp(15px, 4.4vw, 20px); }
 .cell.blank { background: transparent; }
 .cell.s0 { border-color: var(--indigo-3); }
 .cell.s1 { background: rgba(255,122,107,.28); }
@@ -207,6 +210,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
           <button data-mode="h" aria-pressed="true"><span class="k">ひらがな</span></button>
           <button data-mode="k" aria-pressed="false"><span class="k">カタカナ</span></button>
           <button data-mode="m" aria-pressed="false">Mixed</button>
+          <button data-mode="n" aria-pressed="false"><span class="k">一二三</span></button>
         </div>
       </div>
       <div>
@@ -224,7 +228,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
         </label>
       </div>
       <div>
-        <div class="label">Extra sets</div>
+        <div class="label" id="extraLabel">Extra sets</div>
         <label class="toggle" for="dakuOn" style="margin-top:0">
           <input type="checkbox" id="dakuOn">
           <span class="sw" aria-hidden="true"></span>
@@ -280,9 +284,10 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
   <section class="screen" id="statsScreen" hidden>
     <div class="wrap">
       <div class="brand"><h1>Your characters</h1></div>
-      <div class="seg" id="statSeg" style="grid-template-columns:repeat(2,1fr)">
+      <div class="seg" id="statSeg" style="grid-template-columns:repeat(3,1fr)">
         <button data-s="h" aria-pressed="true"><span class="k">ひらがな</span></button>
         <button data-s="k" aria-pressed="false"><span class="k">カタカナ</span></button>
+        <button data-s="n" aria-pressed="false"><span class="k">一二三</span></button>
       </div>
       <div class="legend">
         <span><i style="background:rgba(111,211,193,.5)"></i>Solid</span>
@@ -340,6 +345,28 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
       (POOL[script + ":" + set.id] ||= []).push(kana);
     }
   }));
+  // Numbers mode: each item drops as Arabic digits and as kanji. Strict spellings, one answer each.
+  // [digits, kanji, kana reading, romaji]. Plain 4/7/9 use yon/nana/kyuu only; ten things (とお) is left out
+  // because 10/十 alone can't show it; 日 is day of the month, so 1日 is tsuitachi only.
+  const N_SETS = [
+    { id: "nPlain", label: "Numbers", cols: 5, items: [
+      ["1","一","いち","ichi"], ["2","二","に","ni"], ["3","三","さん","san"], ["4","四","よん","yon"], ["5","五","ご","go"],
+      ["6","六","ろく","roku"], ["7","七","なな","nana"], ["8","八","はち","hachi"], ["9","九","きゅう","kyuu"], ["10","十","じゅう","juu"]] },
+    { id: "nTsu", label: "Things 〜つ", cols: 3, items: [
+      ["1つ","一つ","ひとつ","hitotsu"], ["2つ","二つ","ふたつ","futatsu"], ["3つ","三つ","みっつ","mittsu"],
+      ["4つ","四つ","よっつ","yottsu"], ["5つ","五つ","いつつ","itsutsu"], ["6つ","六つ","むっつ","muttsu"],
+      ["7つ","七つ","ななつ","nanatsu"], ["8つ","八つ","やっつ","yattsu"], ["9つ","九つ","ここのつ","kokonotsu"]] },
+    { id: "nDay", label: "Days of the month 〜日", cols: 4, items: [
+      ["1日","一日","ついたち","tsuitachi"], ["2日","二日","ふつか","futsuka"], ["3日","三日","みっか","mikka"], ["4日","四日","よっか","yokka"],
+      ["5日","五日","いつか","itsuka"], ["6日","六日","むいか","muika"], ["7日","七日","なのか","nanoka"], ["8日","八日","ようか","youka"],
+      ["9日","九日","ここのか","kokonoka"], ["10日","十日","とおか","tooka"], ["14日","十四日","じゅうよっか","juuyokka"], ["20日","二十日","はつか","hatsuka"],
+      ["24日","二十四日","にじゅうよっか","nijuuyokka"]] },
+  ];
+  for (const set of N_SETS) for (const [form, idx] of [["digit", 0], ["kanji", 1]]) for (const it of set.items) {
+    const kana = it[idx];
+    CHARS[kana] = { kana, romaji: it[3], reading: it[2], answers: [it[3]], script: "n", set: set.id, form };
+    (POOL["n:" + set.id] ||= []).push(kana);
+  }
   const setOn = id => id === "basic" || (id === "daku" ? saved.dakuten : id === "yoon" ? saved.youon : saved.dakuten && saved.youon);
 
   // ---------- Storage ----------
@@ -414,6 +441,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
     $("dakuOn").checked = !!saved.dakuten; $("youonOn").checked = !!saved.youon;
     $("lvLabel").textContent = saved.lockLevel ? "Level" : "Starting level";
     for (const b of $("modeSeg").children) b.setAttribute("aria-pressed", b.dataset.mode === saved.mode);
+    $("extraLabel").parentElement.hidden = saved.mode === "n"; // kana-only options
     $("lvOut").textContent = saved.startLevel; $("lvDesc").textContent = lvText(saved.startLevel);
   }
   $("modeSeg").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; saved.mode = b.dataset.mode; persist(); renderSettings(); });
@@ -432,6 +460,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
     input.value = ""; renderHud();
   }
   function pool() {
+    if (saved.mode === "n") return N_SETS.flatMap(set => POOL["n:" + set.id]);
     const scripts = saved.mode === "h" ? ["h"] : saved.mode === "k" ? ["k"] : ["h", "k"];
     return scripts.flatMap(sc => SETS.filter(set => setOn(set.id)).flatMap(set => POOL[sc + ":" + set.id]));
   }
@@ -445,18 +474,25 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
   function spawn(now) {
     const kana = pick(); if (!kana) return;
     G.recent.push(kana); if (G.recent.length > 3) G.recent.shift();
-    const wide = kana.length > 1; // combos (きゃ) are two cells wide and take two lanes
+    // Multi-character items (きゃ, 3つ, 二十四日) are drawn wider and take as many lanes as they cover
+    const len = kana.length, wide = len > 1, width = wide ? CELL * (0.2 + 0.7 * len) : CELL;
     const lanes = Math.max(4, Math.floor(W / (CELL * 1.15)));
-    const busy = new Set(G.drops.filter(d => d.y < 0.4).flatMap(d => d.wide ? [d.lane, d.lane + 1] : [d.lane]));
-    const all = [...Array(wide ? lanes - 1 : lanes).keys()];
-    const free = all.filter(i => !busy.has(i) && !(wide && busy.has(i + 1)));
+    const step = (W - CELL - 16) / Math.max(1, lanes - 1);
+    const span = Math.max(1, Math.ceil(width / step - 0.05));
+    const busy = new Set(G.drops.filter(d => d.y < 0.4).flatMap(d => [...Array(d.span).keys()].map(i => d.lane + i)));
+    const all = [...Array(Math.max(1, Math.floor((W - 16 - width) / step) + 1)).keys()];
+    const free = all.filter(i => [...Array(span).keys()].every(j => !busy.has(i + j)));
     const lane = (free.length ? free : all)[Math.floor(Math.random() * (free.length || all.length))];
-    const x = 8 + lane * ((W - CELL - 16) / Math.max(1, lanes - 1));
+    const x = 8 + lane * step;
     const el = document.createElement("div");
-    el.className = wide ? "drop wide" : "drop"; el.innerHTML = `${kana}<span class="ro">${CHARS[kana].romaji}</span>`;
+    el.className = wide ? "drop wide" : "drop"; if (wide) el.style.width = width + "px";
+    const ch = CHARS[kana];
+    el.innerHTML = ch.reading // numbers: kana reading stacked above the romaji, to stay narrow
+      ? `${kana}<span class="ro two"><span class="rk">${ch.reading}</span>${ch.romaji}</span>`
+      : `${kana}<span class="ro">${ch.romaji}</span>`;
     field.appendChild(el);
     const p = params(G.level);
-    const d = { id: ++G.id, kana, ch: CHARS[kana], lane, wide, x, y: 0, born: now, speed: (1 / p.fall) * (0.9 + Math.random() * 0.2), el };
+    const d = { id: ++G.id, kana, ch, lane, span, wide, x, y: 0, born: now, speed: (1 / p.fall) * (0.9 + Math.random() * 0.2), el };
     G.drops.push(d); place(d);
     G.lastSpawn = now;
   }
@@ -614,7 +650,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
     $("oScore").textContent = G.score.toLocaleString();
     $("oLevel").textContent = G.level;
     $("oAvg").textContent = G.times.length ? (avg(G.times) / 1000).toFixed(1) : "–";
-    const chip = k => `<div class="chip"><span class="k">${k}</span><span class="r">${CHARS[k].romaji}</span></div>`;
+    const chip = k => `<div class="chip"><span class="k">${k}</span><span class="r">${CHARS[k].reading ? CHARS[k].reading + " " : ""}${CHARS[k].romaji}</span></div>`;
     $("oMissed").innerHTML = G.missed.length ? G.missed.map(chip).join("") : `<p class="empty">None. Nice.</p>`;
     const slow = Object.entries(G.slow).filter(([k]) => !G.missed.includes(k)).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k]) => k);
     $("oSlow").innerHTML = slow.length ? slow.map(chip).join("") : `<p class="empty">Nothing yet.</p>`;
@@ -639,17 +675,23 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
   function renderStats() {
     for (const b of $("statSeg").children) b.setAttribute("aria-pressed", b.dataset.s === statScript);
     let html = "";
-    for (const set of SETS) {
+    const cell = (k, ro) => {
+      const s = saved.stats[k], t = s && s.ms != null ? (s.ms / 1000).toFixed(1) + "s" : "";
+      return `<div class="cell s${strength(k)}${k.length > 1 && !/^\d+$/.test(k) ? " wide" : ""}${k.length > 2 ? " long" : ""}"><span class="k">${k}</span><span class="r">${ro}</span><span class="t">${t}</span></div>`;
+    };
+    if (statScript === "n") for (const set of N_SETS) for (const idx of [0, 1]) {
+      html += `<div class="label" style="margin:10px 0 0">${set.label}${idx ? " · kanji" : ""}</div><div class="grid" style="grid-template-columns:repeat(${set.cols},minmax(0,1fr))">`;
+      html += set.items.map(it => cell(it[idx], it[3])).join("") + `</div>`;
+    }
+    if (statScript !== "n") for (const set of SETS) {
       const table = set[statScript];
       // Show a set when it's switched on or has saved progress
       if (!setOn(set.id) && !table.flat().some(k => saved.stats[k]?.n)) continue;
       if (set.id !== "basic") html += `<div class="label" style="margin:10px 0 0">${set.label}</div>`;
-      html += `<div class="grid" style="grid-template-columns:repeat(${set.cols},1fr)">`;
+      html += `<div class="grid" style="grid-template-columns:repeat(${set.cols},minmax(0,1fr))">`;
       set.rows.forEach((row, r) => row.forEach((ro, c) => {
         if (!ro) { html += `<div class="cell blank"></div>`; return; }
-        const k = table[r][c], s = saved.stats[k];
-        const t = s && s.ms != null ? (s.ms / 1000).toFixed(1) + "s" : "";
-        html += `<div class="cell s${strength(k)}${k.length > 1 ? " wide" : ""}"><span class="k">${k}</span><span class="r">${ro}</span><span class="t">${t}</span></div>`;
+        html += cell(table[r][c], ro);
       }));
       html += `</div>`;
     }
@@ -657,7 +699,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
     resetArmed = false; $("resetBtn").textContent = "Reset progress";
   }
   let statsReturn = "start", resetArmed = false;
-  function openStats(from) { statsReturn = from; statScript = saved.mode === "k" ? "k" : "h"; renderStats(); show("stats"); }
+  function openStats(from) { statsReturn = from; statScript = saved.mode === "k" ? "k" : saved.mode === "n" ? "n" : "h"; renderStats(); show("stats"); }
   $("statsBtn").onclick = () => openStats("start");
   $("oStatsBtn").onclick = () => openStats("over");
   $("statsBack").onclick = () => show(statsReturn);
