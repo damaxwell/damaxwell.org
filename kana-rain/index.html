@@ -240,6 +240,19 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
           <span>Combos <span class="k">きゃ しょ</span></span>
         </label>
       </div>
+      <div id="counterBox" hidden>
+        <div class="label">Counters</div>
+        <label class="toggle" for="thingsOn" style="margin-top:0">
+          <input type="checkbox" id="thingsOn">
+          <span class="sw" aria-hidden="true"></span>
+          <span>Things <span class="k">3つ</span></span>
+        </label>
+        <label class="toggle" for="daysOn">
+          <input type="checkbox" id="daysOn">
+          <span class="sw" aria-hidden="true"></span>
+          <span>Days of the month <span class="k">3日</span></span>
+        </label>
+      </div>
       <button class="primary" id="startBtn">Start</button>
       <button class="ghost" id="statsBtn">Your characters</button>
       <p class="tip"><span class="desk-only">Use your <b>English keyboard</b>, not the Japanese one. </span>Both spellings work: <b>shi/si</b>, <b>chi/ti</b>, <b>tsu/tu</b>, <b>fu/hu</b>. For ん type <b>n</b> (or <b>nn</b> when an n-sound character is also falling). を takes <b>wo</b> or <b>o</b>. Combos take <b>sha/sya</b>, <b>cha/tya</b>, <b>ja/zya/jya</b>; じ takes <b>ji/zi</b>, ぢ <b>ji/di</b>, づ <b>zu/du</b>.</p>
@@ -367,11 +380,13 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
     CHARS[kana] = { kana, romaji: it[3], reading: it[2], answers: [it[3]], script: "n", set: set.id, form };
     (POOL["n:" + set.id] ||= []).push(kana);
   }
-  const setOn = id => id === "basic" || (id === "daku" ? saved.dakuten : id === "yoon" ? saved.youon : saved.dakuten && saved.youon);
+  const SET_ON = { basic: () => true, daku: () => saved.dakuten, yoon: () => saved.youon, yoonD: () => saved.dakuten && saved.youon,
+                   nPlain: () => true, nTsu: () => saved.nThings, nDay: () => saved.nDays };
+  const setOn = id => !!SET_ON[id]();
 
   // ---------- Storage ----------
   const KEY = "kanaRain.v1";
-  let saved = { stats: {}, mode: "h", startLevel: 1, lockLevel: false, dakuten: false, youon: false };
+  let saved = { stats: {}, mode: "h", startLevel: 1, lockLevel: false, dakuten: false, youon: false, nThings: false, nDays: false };
   try { const raw = localStorage.getItem(KEY); if (raw) saved = Object.assign(saved, JSON.parse(raw)); } catch (e) {}
   const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {} };
   const stat = k => saved.stats[k] || (saved.stats[k] = { n: 0, hit: 0, miss: 0, err: 0.5, ms: null });
@@ -436,12 +451,16 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
   $("lockLv").addEventListener("change", e => { saved.lockLevel = e.target.checked; persist(); renderSettings(); });
   $("dakuOn").addEventListener("change", e => { saved.dakuten = e.target.checked; persist(); });
   $("youonOn").addEventListener("change", e => { saved.youon = e.target.checked; persist(); });
+  $("thingsOn").addEventListener("change", e => { saved.nThings = e.target.checked; persist(); });
+  $("daysOn").addEventListener("change", e => { saved.nDays = e.target.checked; persist(); });
   function renderSettings() {
     $("lockLv").checked = !!saved.lockLevel;
     $("dakuOn").checked = !!saved.dakuten; $("youonOn").checked = !!saved.youon;
     $("lvLabel").textContent = saved.lockLevel ? "Level" : "Starting level";
     for (const b of $("modeSeg").children) b.setAttribute("aria-pressed", b.dataset.mode === saved.mode);
     $("extraLabel").parentElement.hidden = saved.mode === "n"; // kana-only options
+    $("counterBox").hidden = saved.mode !== "n";               // numbers-only options
+    $("thingsOn").checked = !!saved.nThings; $("daysOn").checked = !!saved.nDays;
     $("lvOut").textContent = saved.startLevel; $("lvDesc").textContent = lvText(saved.startLevel);
   }
   $("modeSeg").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; saved.mode = b.dataset.mode; persist(); renderSettings(); });
@@ -460,7 +479,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
     input.value = ""; renderHud();
   }
   function pool() {
-    if (saved.mode === "n") return N_SETS.flatMap(set => POOL["n:" + set.id]);
+    if (saved.mode === "n") return N_SETS.filter(set => setOn(set.id)).flatMap(set => POOL["n:" + set.id]);
     const scripts = saved.mode === "h" ? ["h"] : saved.mode === "k" ? ["k"] : ["h", "k"];
     return scripts.flatMap(sc => SETS.filter(set => setOn(set.id)).flatMap(set => POOL[sc + ":" + set.id]));
   }
@@ -680,6 +699,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--lantern); o
       return `<div class="cell s${strength(k)}${k.length > 1 && !/^\d+$/.test(k) ? " wide" : ""}${k.length > 2 ? " long" : ""}"><span class="k">${k}</span><span class="r">${ro}</span><span class="t">${t}</span></div>`;
     };
     if (statScript === "n") for (const set of N_SETS) for (const idx of [0, 1]) {
+      // Show a counter set when it's switched on or has saved progress
+      if (!setOn(set.id) && !set.items.some(it => saved.stats[it[0]]?.n || saved.stats[it[1]]?.n)) continue;
       html += `<div class="label" style="margin:10px 0 0">${set.label}${idx ? " · kanji" : ""}</div><div class="grid" style="grid-template-columns:repeat(${set.cols},minmax(0,1fr))">`;
       html += set.items.map(it => cell(it[idx], it[3])).join("") + `</div>`;
     }
