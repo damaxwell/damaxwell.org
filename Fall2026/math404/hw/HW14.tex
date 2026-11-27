@@ -1,0 +1,66 @@
+\documentclass[minion]{homework}
+
+% Some common macros
+\newcommand{\Reals}{\ensuremath{\mathbb R}}% Gives you a shortcut for writing the blackboard R for the real numbers - \RR
+\newcommand{\Rats}{\ensuremath{\mathbb Q}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Nats}{\ensuremath{\mathbb N}} % Gives you a shortcut for writing the blackboard N for the natural numbers - \NN
+\newcommand{\Ints}{\ensuremath{\mathbb Z}} % Gives you a shortcut for writing the blackboard Z for the integer numbers - \ZZ
+
+\doclabel{Math F404: Homework 14}
+\docdate{Due: December 3, 2026}
+
+\begin{document}
+\begin{problems}
+
+\problem Sutherland 14.1
+
+\problem Sutherland 14.2
+
+\problem Sutherland 14.3
+
+\problem Sutherland 14.4
+
+\problem Sutherland 14.5
+
+\problem Sutherland 14.7 
+
+\problem Sutherland 14.8
+
+\problem Sutherland 14.9
+
+\problem Sutherland 14.13
+
+\problem Let $X$ be the the set $\{(x,\sin(\pi/x))\in \Reals^2: 0<x\le 1\Ints\}$
+and let $X^*=X\cup (0,1)$.  You will now finish the proof
+that $X^*$ is not path connected.
+
+As before we'll denote the point
+$(0,1)=*$.  Consider a path $\gamma:[0,1]\to X^*$ with $\gamma(0)=*$ 
+The goal is to show that $\gamma$ is constant and hence there 
+is no path from $*$ to any other point in $X^*$.
+
+You showed that $\gamma^{-1}(\{*\})$ is closed and now need to show that 
+this same set is open.
+
+Recall $B= X^* \cap (\Reals\times (0,\infty))$. You showed $B$ is open.
+
+You also showed that $C=\pi(B)$ is the point zero together with
+disjoint intervals $I_k=(1/(2k+1),1/(2k))$.
+
+\begin{subproblems}
+\item Show that any connected subset of $C$ that contains $0$ is the singleton $\{0\}$.
+Hint: connected subsets of $\Reals$ are intervals; show that any subset of $C$
+containing $0$ and some other point is not an interval.
+\item Suppose $0\le t\le 1$ and that $\gamma(t)=*$. If $0<t<1$ show 
+that there is an $\epsilon>0$ so that $J=(t-\epsilon,t+\epsilon)\subset
+\gamma^{-1}(B)$.  Indicate the small modification needed 
+for $J$ if $t=0$ or $t=1$.
+\item Show that in fact $\gamma=*$ on $J$.  Hint $J$ is connected and look at $\pi(\gamma(J))$.
+\item Conclude $\gamma^{-1}(\{*\})$ is open.
+\end{subproblems}
+
+\problem AI Use. Please describe specifically how you used AI to help complete this assignment.
+
+\end{problems}
+
+\end{document}
